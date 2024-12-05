@@ -13,21 +13,21 @@
 }
 
 @media screen and (max-width: 800px) {
-    .about .row {
+    .informasi .row {
         flex-wrap: wrap;
     }
 
-    .about .row .about-img img {
+    .informasi .row .informasi-img img {
         height: 24rem;
         object-fit: cover;
         object-position: center;
     }
 
-    .about .row .content {
+    .informasi .row .content {
         padding: 0;
     }
 
-    .about .row .content h3 {
+    .informasi .row .content h3 {
         margin-top: 1rem;
         font-size: 1.6rem;
 
@@ -197,7 +197,7 @@
     /* Banner */
     /* Banner End */
 
-    /* About */
+    /* informasi */
     .row {
         flex-direction: column;
         text-align: center;
@@ -215,5 +215,5 @@
         flex: 1 1 100%;
     }
 
-    /* About End */
+    /* informasi End */
 }

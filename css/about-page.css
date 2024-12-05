@@ -1,31 +1,5 @@
-:root {
-    --primary: #C0EBA6;
-    --secondary: #fff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-decoration: none;
-}
-
-html {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
-    scroll-behavior: smooth;
-}
-
-body {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    color: white;
-}
-
-nav {
+/* navbar khusus page about */
+.nav-about {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,26 +16,27 @@ nav {
     z-index: 999999;
     backdrop-filter: blur(3px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-nav.sticky {
-    padding: 2px 100px;
+.nav-about.sticky {
+    padding: 1px 100px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
 }
 
-nav a.logo {
+.nav-about a.logo {
     color: var(--secondary);
     font-size: 2.5rem;
     /* width:150 */
 }
 
-nav .logo span {
+.nav-about .logo span {
     color: var(--primary);
 }
 
 
-nav ul {
+.nav-about ul {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -70,12 +45,12 @@ nav ul {
     margin-bottom: 0px;
 }
 
-nav ul li {
+.nav-about ul li {
     position: relative;
     list-style: none;
 }
 
-nav ul li a {
+.nav-about ul li a {
     position: relative;
     margin: 0 15px;
     text-decoration: none;
@@ -91,15 +66,15 @@ nav ul li a {
     display: inline-block;
 }
 
-nav ul li a::before,
-nav ul li a::after {
+.nav-about ul li a::before,
+.nav-about ul li a::after {
     content: '';
     position: absolute;
     width: 100%;
     left: 0;
 }
 
-nav ul li a::before {
+.nav-about ul li a::before {
     background-color: #dbeb00;
     height: 2px;
     bottom: 0;
@@ -116,7 +91,7 @@ nav ul li a::before {
     -o-transform: scaleX(0);
 }
 
-nav ul li a::after {
+.nav-about ul li a::after {
     content: attr(data-replace);
     height: 100%;
     top: 0;
@@ -134,7 +109,7 @@ nav ul li a::after {
     -o-transform: translate3d(200%, 0, 0);
 }
 
-nav ul li a:hover::before {
+.nav-about ul li a:hover::before {
     transform-origin: 0% 50%;
     transform: scaleX(1);
     -webkit-transform: scaleX(1);
@@ -143,7 +118,7 @@ nav ul li a:hover::before {
     -o-transform: scaleX(1);
 }
 
-nav ul li a:hover::after {
+.nav-about ul li a:hover::after {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -151,8 +126,8 @@ nav ul li a:hover::after {
     -o-transform: translate3d(0, 0, 0);
 }
 
-nav.sticky img,
-nav.sticky ul li a {
+.nav-about.sticky img,
+.nav-about.sticky ul li a {
     color: var(--secondary);
 }
 
@@ -162,96 +137,25 @@ nav.sticky ul li a {
 }
 /* navbar end */
 
-/* banner */
-.banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url('../img/background-banner.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-}
-
-.banner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.banner .content {
-    padding: 1.4rem 7%;
-    max-width: 100rem;
-    z-index: 1;
-    color: var(--secondary);
-    text-align: center;
-}
-
-.banner .content h1 {
-    font-size: 5em;
-    color: var(--secondary);
-    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
-    line-height: 1.2;
-}
-
-.banner .content h1 span {
-    color: #C0EBA6;
-}
-
-.banner .content p {
-    font-size: 1.6rem;
-    margin-top: 1rem;
-    line-height: 1.4;
-    font-weight: 100;
-    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
-    mix-blend-mode: difference;
-}
-
-.banner .content .cta {
-    margin-top: 1rem;
-    display: inline-block;
-    padding: 1rem 3rem;
-    font-size: 1.4rem;
-    color: var(--secondary);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
-    -webkit-border-radius: 0.5rem;
-    -moz-border-radius: 0.5rem;
-    -ms-border-radius: 0.5rem;
-    -o-border-radius: 0.5rem;
-}
-
-/* banner end */
-
-/* informasi section */
-.informasi {
+/* about section */
+.about {
     padding: 6rem 7%;
     background: #f9f9f9;
     color: #333;
     text-align: center;
 }
 
-.informasi h2 {
+.about h2 {
     font-size: 2.4rem;
     margin-bottom: 2rem;
     color: #333;
 }
 
-.informasi h2 span {
+.about h2 span {
     color: #28a745;
 }
 
-.informasi .row {
+.about .row {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -259,37 +163,37 @@ nav.sticky ul li a {
     margin-bottom: 3rem;
 }
 
-.informasi .row .informasi-img {
+.about .row .about-img {
     flex: 1 1 40%;
 }
 
-.informasi .row .informasi-img img {
+.about .row .about-img img {
+    border-radius: 50%;
     width: 100%;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
-.informasi .row .content {
+.about .row .content {
     flex: 1 1 50%;
     text-align: left;
 }
 
-.informasi .row .content h3 {
+.about .row .content h3 {
     font-size: 1.8rem;
     color: #28a745;
     margin-bottom: 1rem;
 }
 
-.informasi .row .content p {
+.about .row .content p {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
-.informasi .row .content button {
+.about .row .content button {
     padding: 0.8rem 1.5rem;
     background: #28a745;
     color: #fff;
@@ -303,110 +207,42 @@ nav.sticky ul li a {
     -o-border-radius: 5px;
 }
 
-.informasi .funfact {
+.about .funfact {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 2rem;
 }
 
-.informasi .funfact .funfact-item {
+.about .funfact .funfact-item {
     text-align: center;
     flex: 1 1 20%;
 }
 
-.informasi .funfact .funfact-item i {
+.about .funfact .funfact-item i {
     font-size: 2rem;
 }
 
-.informasi .funfact .funfact-item .fa-leaf {
+.about .funfact .funfact-item .fa-leaf {
     color: #32a852;
 }
 
-.informasi .funfact .funfact-item .fa-wheat-awn {
+.about .funfact .funfact-item .fa-wheat-awn {
     color: #daa520;
 }
 
-.informasi .funfact .funfact-item .fa-tree {
+.about .funfact .funfact-item .fa-tree {
     color: #6b4226;
 }
 
-.informasi .funfact .funfact-item p {
+.about .funfact .funfact-item p {
     font-size: 1rem;
     line-height: 1.4;
 }
 
-.informasi .funfact .funfact-item span {
+.about .funfact .funfact-item span {
     font-size: 1.4rem;
     color: #28a745;
 }
 
-/* informasi end */
-
-/* diagram */
-.data {
-    color: black;
-    display: flex;
-    height: 80vh;
-    padding-top: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.data .row {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.data .row .content {
-    max-width: 48%;
-}
-
-.data .row .diagram-parent {
-    width: 360px;
-    height: 360px;
-}
-
-/* diagram end */
-
-/* footer */
-footer {
-    background-color: var(--primary);
-    text-align: center;
-    padding: 1rem 0 3rem;
-    margin-top: 3rem;
-}
-
-footer .socials {
-    padding: 1rem 0;
-}
-
-footer .socials a {
-    color: white;
-    margin: 1rem;
-
-}
-
-footer .socials a:hover, footer .links a:hover {
-    color: var(--bg);
-}
-
-footer .links {
-    margin-bottom: 1.4rem;
-}
-
-footer .links a {
-    color: #fff;
-    padding: 0.7rem 1rem;
-}
-
-footer .credit {
-    font-size: 0.8rem;
-}
-
-footer .credit a {
-    color: var(--bg);
-    font-weight: 700;
-}
-/* footer */
+/* about end */
