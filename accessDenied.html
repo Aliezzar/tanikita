@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anda tidak memiliki akses ke halaman ini!</h1>
+        <a href=".">Kembali ke mainpage</a>
+    </div>
+    <script>
+        document.querySelector('a').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#0056b3';
+        });
+        document.querySelector('a').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#007bff';
+        });
+    </script>
+</body>
+</html>
