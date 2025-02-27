@@ -15,11 +15,17 @@ if (isset($_POST['submit'])) {
   mysqli_stmt_bind_param($stmt, "ss", $email, $password);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
+  
 
   if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
     $_SESSION['username'] = $row['username'];
     $_SESSION['role'] = $row['role'];
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['UserID'] = $row['UserID'];
+
+    session_regenerate_id(true);
+    
     if ($row['role'] == 1) {
       header("Location: ../../admin");
     } else {

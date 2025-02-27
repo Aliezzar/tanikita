@@ -15,7 +15,6 @@ if (isset($_POST['submit'])) {
     $cpassword = hash('sha256', $_POST['cpassword']);
 
     if (filter_var($sanitizeEmail, FILTER_VALIDATE_EMAIL) && !empty($password)) {
-        // email yang diperbolehkan
         $allowedDomains = [
             'gmail.com',
             'yahoo.com',
@@ -114,6 +113,6 @@ if (isset($_POST['submit'])) {
         </form>
     </section>
 
-</body>tio
+</body>
 
 </html>

@@ -1,0 +1,25 @@
+<?php
+include 'connection.php';
+session_start();
+
+if (!isset($_SESSION['UserID'])) {
+    die("Session UserID tidak ditemukan! Coba login ulang.");
+}
+
+$id = $_SESSION['UserID']; // Ambil ID dari session
+
+// Query DELETE
+$stmt = mysqli_prepare($conn, "DELETE FROM users WHERE UserID = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+
+// Cek apakah ada perubahan di database
+if (mysqli_stmt_affected_rows($stmt) > 0) {
+    session_destroy(); // Hapus session setelah akun dihapus
+    echo "Akun berhasil dihapus.";
+    header("Location: index.php"); // Redirect ke halaman login setelah delete
+    exit();
+} else {
+    echo "Gagal menghapus akun.";
+}
+?>

@@ -1,4 +1,5 @@
 <?php
+include_once("php/connection.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -10,12 +11,12 @@ session_start();
     <title>QualyCheck</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,13 +33,24 @@ session_start();
         <ul style="color: black;">
             <li><a href="#home">Home</a></li>
             <li><a href="#informasi">informasi</a></li>
-            <li><a href="./pages/about.php">Tentang Kami</a></li> 
-            <?php if (isset($_SESSION['username'])): ?>
-                <li><a href="pages/login-register/logout.php">Log out</a></li>
-            <?php else: ?>
-                <li><a href="./pages/login-register">Sign in / Sign up</a></li>
-            <?php endif; ?>
-            </ul>
+            <li><a href="./pages/about.php">Tentang Kami</a></li>
+            <?php if (isset($_SESSION['username'])) { ?>
+                <li>
+                    <a href="pages/login-register/logout.php">Log out</a>
+                </li>
+                <li>
+                    <form action="pages/login-register/deleteAccount.php" method="POST"
+                        onsubmit="return confirm('Apakah kamu yakin ingin menghapus akun ini?')"
+                        style="background: transparent; border: none;"></form>
+                        <button type="submit" name="deleteAccount" style="background: transparent; border: none; color: #fff; cursor: pointer;">Hapus Akun</button>
+                    </form>
+                </li>
+            <?php } else { ?>
+                <li>
+                    <a href="./pages/login-register">Sign in / Sign up</a>
+                </li>
+            <?php } ?>
+        </ul>
         <div class="menu-toggle">
             <input type="checkbox">
             <span></span>
@@ -71,7 +83,9 @@ session_start();
                     Produk pertanian adalah hasil dari bercocok tanam dan peternakan untuk memenuhi kebutuhan manusia,
                     seperti padi, jagung, kopi, dan susu. Produk ini penting untuk ketahanan pangan dan perekonomian.
                 </p>
-                <button>Pelajari Lebih Lanjut</button>
+                <a href="pages/fakta">
+                    <button>Pelajari Lebih Lanjut</button>
+                </a>
             </div>
         </div>
 
@@ -131,10 +145,12 @@ session_start();
         </div>
 
         <div class="credit">
-            <p>Creater by <a href="">aliezzarwijaya</a>. | &copy; 2024.</p>
+            <p>Creater by <a href=".">aliezzarwijaya</a>. | &copy; 2024.</p>
         </div>
     </footer>
     <!-- Footer end -->
+
+
 
     <!-- Typing effect -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
