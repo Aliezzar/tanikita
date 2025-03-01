@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
         $emailDomain = substr(strrchr($sanitizeEmail, "@"), 1);
 
         if (!in_array($emailDomain, $allowedDomains)) {
-            echo "<script>alert('Domain email tidak diizinkan. henya menggunakan email email terpercaya seperti Gmail, Yahoo, Outlook, dll.')</script>";
+            echo "<script>alert('Domain email tidak diizinkan. Gunakanlah email terpercaya seperti Gmail, Yahoo, Outlook, dll.')</script>";
             exit();
         }
 
@@ -54,7 +54,10 @@ if (isset($_POST['submit'])) {
                         VALUES ('$username', '$email', '$password')";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
-                    echo "<script>alert('Selamat, pendaftaran berhasil!')</script>";
+                    echo "<script>
+                alert('User added successfully');
+                window.location = 'index.php';
+            </script>";
                     $username = "";
                     $email = "";
                     $_POST['password'] = "";
