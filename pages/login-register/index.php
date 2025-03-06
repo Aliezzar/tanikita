@@ -8,11 +8,11 @@ if (isset($_SESSION['username'])) {
 }
 
 if (isset($_POST['submit'])) {
-  $email = $_POST['email'];
+  $emailUsername = $_POST['email-username'];
   $password = hash('sha256', $_POST['password']);
 
-  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ? AND password = ?");
-  mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ?  OR username = ? AND password = ?");
+  mysqli_stmt_bind_param($stmt, "sss", $emailUsername, $emailUsername, $password);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
   
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
     <form action="" method="POST" class="login-email">
       <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
       <div class="input-group">
-        <input type="email" placeholder="Email" name="email" required>
+        <input type="text" placeholder="Nama lengkap atau Email" name="email-username" required>
       </div>
       <div class="input-group">
         <input type="password" placeholder="Password" name="password" required>
