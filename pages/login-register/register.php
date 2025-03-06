@@ -98,16 +98,16 @@ if (isset($_POST['submit'])) {
                 daftar
             </p>
             <div class="input-group">
-                <input type="text" placeholder="Nama Lengkap" name="username" value="<?php echo $username; ?>" required>
+                <input type="text" placeholder="Nama Lengkap" name="username" value="<?php echo (isset($username)?$username:''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+                <input type="email" placeholder="Email" name="email" value="<?php echo (isset($email)?$email:''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                <input type="password" placeholder="Password" name="password" value="<?php echo (isset($_POST['password'])?$_POST['password']:''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Konfirmasi Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+                <input type="password" placeholder="Konfirmasi Password" name="cpassword" value="<?php echo (isset($_POST['cpassword'])?$_POST['cpassword']:''); ?>" required>
             </div>
             <div class="input-group">
                 <button name="submit" class="btn">Daftar</button>

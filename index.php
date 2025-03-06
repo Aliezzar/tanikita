@@ -23,7 +23,24 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
         rel="stylesheet">
 
+    <script>
+        function deleteAccount() {
+            if (confirm('Apakah kamu yakin ingin menghapus akun ini?')) {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'pages/login-register/deleteAccount.php';
 
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'deleteAccount';
+                input.value = 'true';
+                form.appendChild(input);
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+    </script>
 
 </head>
 
@@ -39,11 +56,7 @@ session_start();
                     <a href="pages/login-register/logout.php">Log out</a>
                 </li>
                 <li>
-                    <form action="pages/login-register/deleteAccount.php" method="POST"
-                        onsubmit="return confirm('Apakah kamu yakin ingin menghapus akun ini?')"
-                        style="background: transparent; border: none;"></form>
-                        <button type="submit" name="deleteAccount" style="background: transparent; border: none; color: #fff; cursor: pointer;">Hapus Akun</button>
-                    </form>
+                    <a onclick="deleteAccount()" style="cursor: pointer;">Hapus Akun</a>
                 </li>
             <?php } else { ?>
                 <li>

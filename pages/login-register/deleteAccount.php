@@ -16,10 +16,10 @@ mysqli_stmt_execute($stmt);
 // Cek apakah ada perubahan di database
 if (mysqli_stmt_affected_rows($stmt) > 0) {
     session_destroy(); // Hapus session setelah akun dihapus
-    echo "Akun berhasil dihapus.";
+    echo "<script>alert('Akun berhasil dihapus.');</script>";
     header("Location: index.php"); // Redirect ke halaman login setelah delete
     exit();
 } else {
-    echo "Gagal menghapus akun.";
+    echo "<script>alert('Gagal menghapus akun.');</script>";
 }
 ?>

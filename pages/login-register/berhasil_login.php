@@ -22,7 +22,7 @@ if (!isset($_SESSION['username'])) {
         <section class="container-logout">
             <h1>Selamat Datang <?php echo $_SESSION['username']; ?>!</h1>
             <div class="input-group">
-                <button class="btn"><a href="../../index.php" style="color: white; text-decoration: none;">Kembali ke mainpage</a></button>
+            <a href="../../index.php" style="color: white; text-decoration: none;"><button class="btn">Kembali ke mainpage</button></a>
             </div>
             <form action="logout.php" method="POST" class="login-email">
                 <div class="input-group">

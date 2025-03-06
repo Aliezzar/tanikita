@@ -33,7 +33,9 @@ if (isset($_POST['submit'])) {
     }
     exit();
   } else {
-    echo "Email atau password salah.";
+    echo "<script>
+     alert('Email atau password salah.');
+     </script>";
   }
 }
 ?>
