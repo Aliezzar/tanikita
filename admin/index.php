@@ -22,6 +22,7 @@ if ($_SESSION['role'] == 1) {
                 padding: 0;
                 box-sizing: border-box;
             }
+
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f4f4f9;
@@ -140,7 +141,7 @@ if ($_SESSION['role'] == 1) {
                 </div>
                 <nav class="sidebar-container">
                     <a href="#" class="child">
-                        <i class="fas fa-tachometer-alt" style="margin-right: 0.5rem;"></i> Dasboard
+                        <i class="fas fa-tachometer-alt" style="margin-right: 0.5rem;"></i> User Management System
                     </a>
                 </nav>
             </div>
@@ -180,13 +181,22 @@ if ($_SESSION['role'] == 1) {
                             </td>
                             <td>
                                 <a href='edit.php?id=<?php echo $user_data["UserID"]; ?>'>Edit</a> |
-                                <a href='delete.php?hapus=<?php echo $user_data["UserID"]; ?>'>Delete</a>
+                                <script>
+                                    function deleteNotif() {
+                                        if (confirm("yakin mau menghapus akun ini?")) {
+                                            window.location.href = 'delete.php?hapus=<?= $user_data["UserID"]; ?>'
+                                        }
+                                    }
+                                </script>
+                                <a onclick="deleteNotif()" style="cursor: pointer;">Delete</a>
                             </td>
                         </tr>
                     <?php }
                     ?>
             </section>
         </section>
+
+
     </body>
 
     </html>

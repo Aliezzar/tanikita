@@ -5,30 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fakta</title>
-    <link rel="stylesheet" href="../../css/pengertian.css">
+    <link rel="stylesheet" href="css/pengertian.css">
 </head>
 
 <body>
     <!-- nav -->
-    <nav style="color: black;">
-        <a href="." class="logo">Qualy<span>Check</span></a>
-        <ul style="color: black;">
-            <li><a href="../..">Home</a></li>
-            <li><a href="../../#informasi">informasi</a></li>
-            <li><a href="../about.php">Tentang Kami</a></li>
-            <?php if (isset($_SESSION['username'])): ?>
-                <li><a href="../login-register/logout.php">Log out</a></li>
-            <?php else: ?>
-                <li><a href="../login-register">Sign in / Sign up</a></li>
-            <?php endif; ?>
-        </ul>
-        <div class="menu-toggle">
-            <input type="checkbox">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+   <?php
+   include_once '../../components/nav.php';
+   ?>
     <!-- nav end -->
     <section class="fakta-container">
         <div class="fakta-wrapper">

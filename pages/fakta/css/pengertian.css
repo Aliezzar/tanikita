@@ -1,3 +1,9 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #C0EBA6;
     --secondary: #fff;
@@ -189,7 +195,7 @@ th {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 0px 0;
     text-align: center;
 }
 

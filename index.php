@@ -1,9 +1,12 @@
 <?php
-include_once("php/connection.php");
+include_once $_SERVER['DOCUMENT_ROOT'].'/qualycheck/components/connection.php';
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
 
 <head>
     <meta charset="UTF-8">
@@ -22,55 +25,12 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
         rel="stylesheet">
-
-    <script>
-        function deleteAccount() {
-            if (confirm('Apakah kamu yakin ingin menghapus akun ini?')) {
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'pages/login-register/deleteAccount.php';
-
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'deleteAccount';
-                input.value = 'true';
-                form.appendChild(input);
-
-                document.body.appendChild(form);
-                form.submit();
-            }
-        }
-    </script>
-
 </head>
 
 <body>
-    <nav style="color: black;">
-        <a href="." class="logo">Qualy<span>Check</span></a>
-        <ul style="color: black;">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#informasi">informasi</a></li>
-            <li><a href="./pages/about.php">Tentang Kami</a></li>
-            <?php if (isset($_SESSION['username'])) { ?>
-                <li>
-                    <a href="pages/login-register/logout.php">Log out</a>
-                </li>
-                <li>
-                    <a onclick="deleteAccount()" style="cursor: pointer;">Hapus Akun</a>
-                </li>
-            <?php } else { ?>
-                <li>
-                    <a href="./pages/login-register">Sign in / Sign up</a>
-                </li>
-            <?php } ?>
-        </ul>
-        <div class="menu-toggle">
-            <input type="checkbox">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+
+    <!-- Navbar -->
+     <?php include_once $_SERVER['DOCUMENT_ROOT'].'/qualycheck/components/navbar.php';?>
 
     <section id="home" class="banner">
         <div class="content">
@@ -143,24 +103,7 @@ session_start();
     <!-- diagram fact end -->
 
     <!-- Footer -->
-    <footer>
-        <div class="socials">
-            <a href="#"><i data-feather="instagram"></i></a>
-            <a href="#"><i data-feather="twitter"></i></a>
-            <a href="#"><i data-feather="facebook"></i></a>
-        </div>
-
-        <div class="links">
-            <a href="#home"></a>
-            <a href="#informasi">Tentang Kami</a>
-            <a href="#menu">Menu</a>
-            <a href="#contact">Kontak</a>
-        </div>
-
-        <div class="credit">
-            <p>Creater by <a href=".">aliezzarwijaya</a>. | &copy; 2024.</p>
-        </div>
-    </footer>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'].'/qualycheck/components/footer.php';?>
     <!-- Footer end -->
 
 

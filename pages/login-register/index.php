@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
   $emailUsername = $_POST['email-username'];
   $password = hash('sha256', $_POST['password']);
 
-  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email = ?  OR username = ? AND password = ?");
+  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE (email = ?  OR username = ?) AND password = ?");
   mysqli_stmt_bind_param($stmt, "sss", $emailUsername, $emailUsername, $password);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     exit();
   } else {
     echo "<script>
-     alert('Email atau password salah.');
+     alert('Email, nama atau password salah.');
      </script>";
   }
 }
