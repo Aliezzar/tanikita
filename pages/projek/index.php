@@ -36,8 +36,17 @@ if (!isset($_SESSION['username'])) {
      <?php include_once $_SERVER['DOCUMENT_ROOT'].'/qualycheck/components/navbar.php'; ?>
     <!-- navbar end -->
 
-    <section></section>
-    <h1>Selamat Datang</h1>
+    <!-- Banner Section -->
+    <section style="background-color: #1a1a1a; color: #fff; padding: 50px 20px; text-align: center; min-height: 100vh; align-items: center;">
+        <h1 style="font-size: 3rem; font-family: 'Poppins', sans-serif; margin-bottom: 20px;">Welcome to QualyCheck</h1>
+        <p style="font-size: 1.2rem; font-family: 'Poppins', sans-serif; margin-bottom: 30px;">
+            Your one-stop solution for quality assurance and project management.
+        </p>
+        <a href="/qualycheck/pages/projects" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; font-family: 'Poppins', sans-serif; font-size: 1rem;">
+            Explore Projects
+        </a>
+    </section>
+
 </body>
 
 </html>
