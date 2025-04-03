@@ -1,11 +1,7 @@
 :root {
   --primary: #c0eba6;
   --secondary: #fff;
-  --first-color: hsl(255 72%, 55%);
   --text-color: hsl(225, 52%, 30%);
-  --body-color: linear-gradient(100deg, hsl(225, 75%, 92%), hsl(225, 78%, 78%));
-  --container-color: hsl(225, 75%, 97%);
-
   --body-font: "Montserrat", sans-serif;
   --normal-font-size: 1rem;
 }

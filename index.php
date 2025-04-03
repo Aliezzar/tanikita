@@ -36,7 +36,7 @@ session_start();
         <div class="content">
             <h1>Ayo! bersama, kita belajar mengerti<span class="typing-text"></span></h1>
             <p>Untuk menemukan bagaimana standar kualitas dan kandungan dalam produk pertanian</p>
-            <a href="./pages/projek/" class="cta">Cek sekarang!</a>
+            <a href="./pages/projek/index.php" class="cta">Cek sekarang!</a>
         </div>
     </section>
 

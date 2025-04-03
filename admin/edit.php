@@ -197,8 +197,8 @@ if ($_SESSION['role'] == 1) {
                 <tr>
                     <td>Role</td>
                     <td>
-                        <input type="radio" name="role" value="0"> User
-                        <input type="radio" name="role" value="1"> Admin
+                        <input type="radio" name="role" value="0" <?php if ($_SESSION['role'] == 0) {echo "checked";} ?> required> User
+                        <input type="radio" name="role" value="1" <?php if ($_SESSION['role'] == 1) {echo "checked";} ?> required> Admin
                     </td>
                 </tr>
                 <tr>

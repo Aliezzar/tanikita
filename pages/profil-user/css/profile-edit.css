@@ -1,0 +1,98 @@
+/* profile edit */
+/* .profile-edit {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #333;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.profile-edit h2 {
+  text-align: center;
+  margin-bottom: 20px;
+} */
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+/* revisi */
+.container-profile .profile-edit .profil-sebelah-kiri {
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+  width: 252px;
+  height: 252px;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri img.profile-picture-edit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -ms-transition: opacity .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri:hover .profile-picture-edit {
+  opacity: .5;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri .profile-picture-edit:hover {
+  cursor: pointer;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri .hover-effect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri:hover .hover-effect {
+  opacity: 1;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri .icon-hover {
+  color: rgba(49, 54, 61, 0.589);
+  font-size: 24px;
+}
+
+.container-profile .profile-edit .profil-sebelah-kiri .text-hover {
+  color: rgba(61, 65, 71, 0.603);
+}

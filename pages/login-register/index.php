@@ -23,6 +23,8 @@ if (isset($_POST['submit'])) {
     $_SESSION['role'] = $row['role'];
     $_SESSION['email'] = $row['email'];
     $_SESSION['UserID'] = $row['UserID'];
+    $_SESSION['jenis_kelamin'] = $row['jenis_kelamin'];
+    $_SESSION['profile_picture'] = $row['profile_picture'];
 
     session_regenerate_id(true);
     

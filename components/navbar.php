@@ -25,11 +25,11 @@
 <body>
 
     <nav style="color: black;">
-        <a href="." class="logo">Qualy<span>Check</span></a>
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/index.php" class="logo">Qualy<span>Check</span></a>
         <ul style="color: black;">
-            <li><a href="/qualycheck/#home">Home</a></li>
-            <li><a href="/qualycheck/#informasi">informasi</a></li>
-            <li><a href="/qualycheck/pages/about.php">Tentang Kami</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/#home">Home</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/#informasi">Informasi</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/about.php">Tentang Kami</a></li>
             <?php if (isset($_SESSION['username'])) { ?>
                 <li>
                     <div class="container">
@@ -39,22 +39,22 @@
                                 <span class="dropdown__name"><?= $_SESSION['username'] ?></span>
                                 <div class="dropdown__icons">
                                     <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                                    <i class="ri_close-line dropdown__close"></i>
+                                    <i class="ri-close-line dropdown__close"></i>
                                 </div>
                             </a>
 
                             <ul class="dropdown__menu">
-                                <li class="dropdown__item" onclick="href('/qualycheck/pages/profil-user')">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/qualycheck/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256",$_SESSION['UserID'])) ?>'">
                                     <i class="ri-user-3-line dropdown__icon"></i>
                                     <span class="dropdown__name">Profil</span>
                                 </li>
 
-                                <li class="dropdown__item" onclick="href('/qualycheck/pages/login-register/logout.php')">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/login-register/logout.php'">
                                     <i class="ri-logout-box-line dropdown__icon"></i>
                                     <span class="dropdown__name">Log out</span>
                                 </li>
 
-                                <li class="dropdown__item cursor: pointer;" onclick="deleteAccount()">
+                                <li class="dropdown__item" style="cursor: pointer;" onclick="deleteAccount()">
                                     <i class="ri-delete-bin-line dropdown__icon"></i>
                                     <span class="dropdown__name">Hapus Akun</span>
                                 </li>
@@ -79,7 +79,7 @@
                 </li>
             <?php } else { ?>
                 <li>
-                    <a href="/qualycheck/pages/login-register">Sign in / Sign up</a>
+                    <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/login-register">Sign in / Sign up</a>
                 </li>
             <?php } ?>
         </ul>

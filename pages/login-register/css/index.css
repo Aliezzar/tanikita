@@ -37,7 +37,7 @@
     }
 
     .container {
-      width: 450px;
+      width: 550px;
       min-height: 400px;
       background: rgba(255, 255, 255, 1);
       border-radius: 20px;
@@ -139,6 +139,12 @@
     .input-group .btn:hover {
       transform: translateY(-5px);
       background: #6c5ce7;
+    }
+
+    .input-group-jenis-kelamin {
+      display: flex;
+      margin-bottom: 25px;
+      justify-content: space-between;
     }
 
     .login-register-text,
