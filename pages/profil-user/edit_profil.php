@@ -7,6 +7,11 @@ include_once '../../components/notification.html';
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
     uploadDetailProfil();
     uploadImage();
+    $exit = header("Location: edit_profil.php?act=success");
+    exit($exit);
+}
+
+if (isset($_GET['act']) && $_GET['act'] === 'success') {
     echo "<script>
     let date = new Date();
     showNotif('Sukses mengedit profil ' + date.toLocaleString(), 'success');
@@ -38,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
                 <div class="profil-sebelah-kiri">
                     <label for="file_upload" style="width: 100%; height: 100%;">
                         <?php if ($_SESSION['profile_picture'] != null) { ?>
-                            <img src="../../img/profile/<?= $_SESSION['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
+                            <img id="image" src="../../img/profile/<?=$_SESSION['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">
                         <?php } else { ?>
-                            <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-edit">
+                            <img id="image" src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-edit">
                         <?php } ?>
                         <div class="hover-effect" style="cursor: pointer;">
                             <span class="icon-hover">
@@ -49,7 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
                             <span class="text-hover">Edit Foto Profil</span>
                         </div>
                     </label>
-                    <input type="file" id="file_upload" name="file_upload" style="display: none;" accept="image/*">
+                    
+                    <input type="file" onchange="loadFile(event)" id="file_upload" name="file_upload" style="display: none;" accept="image/*">
                 </div>
 
                 <!-- detail -->
@@ -109,6 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
     </table>
     </div>
     </section>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
 

@@ -41,11 +41,11 @@ function uploadImage() {
         return;
     }
     $target_dir = "../../img/profile/";
-    $target_file = $target_dir . basename($_FILES["file_upload"]['name']);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
     $file_name = basename($_FILES['file_upload']['name']);
     $file_name = preg_replace('/[^a-zA-Z0-9-_\.]/', '_', $file_name); // Sanitasi nama file)
+    $target_file = $target_dir . $file_name;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     $check = getImageSize($_FILES["file_upload"]['tmp_name']);
     if ($check == false) {
@@ -68,6 +68,23 @@ function uploadImage() {
         echo "Maaf terjadi kesalahan";
     }
 }
+
+
+
+// $file_name = basename($_FILES['file_upload']['name']);
+// // Sanitize file name
+// $file_name = preg_replace('/[^a-zA-Z0-9-_\.]/', '_', $file_name);
+
+// // Tentukan lokasi penyimpanan (misalnya folder "uploads")
+// $target_dir = "uploads/";
+// $target_file = $target_dir . $file_name;
+
+// // Pindahin file dari temporary ke folder tujuan pakai nama yang udah disanitasi!
+// if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $target_file)) {
+//     echo "UwU file berhasil di-upload sebagai $file_name ✨";
+// } else {
+//     echo "Nyaaa~ gagal upload filenya (>_<)";
+// }
 
 ?>
 

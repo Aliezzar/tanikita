@@ -26,11 +26,11 @@ $user = $result->fetch_assoc();
 </head>
 
 <body class="profile_page">
-    <?php include '../../components/navbar.php'; ?>
+    <?php include '../../components/navbar.php'; $id_hash_user = hash('sha256', $_SESSION['UserID']); ?>
 
     <section class="container-profile">
         <?php if ($user) {
-            if ($uid == hash('sha256', $_SESSION['UserID'])) { ?>
+            if ($uid == $id_hash_user) { ?>
                 <div class="profile-view1">
                     <div class="profilview-sebelah-kiri">
                     <div class="img">                    
@@ -44,6 +44,7 @@ $user = $result->fetch_assoc();
                             <a href="edit_profil.php" class="cta" >
                                 <button class="button" role="button">Edit Profil</button>
                             </a>
+                            <!-- style="background-color: blue; color: white; border-radius: 20px; width: 80px;" -->
                         </div>
                     </div>
 
@@ -77,7 +78,7 @@ $user = $result->fetch_assoc();
                         </table>
                     </div>
                 </div>
-            <?php } elseif ($uid != hash('sha256', $_SESSION['UserID'])) { ?>
+            <?php } elseif ($uid != $id_hash_user) { ?>
                 <div class="profile-view2">
                     <h2>Edit Profil</h2>
                     <table>
