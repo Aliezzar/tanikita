@@ -32,15 +32,17 @@ $user = $result->fetch_assoc();
         <?php if ($user) {
             if ($uid == hash('sha256', $_SESSION['UserID'])) { ?>
                 <div class="profile-view1">
-                    <div class="profil-sebelah-kiri">
+                    <div class="profilview-sebelah-kiri">
+                    <div class="img">                    
                         <?php if ($user['profile_picture'] != null) { ?>
                         <img src="../../img/profile/<?=$_SESSION['profile_picture'];?>" alt="Profile Picture" class="profile-picture-view">
                         <?php } else { ?>
                         <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
                         <?php } ?>
+                    </div>
                         <div class="btn-edit">
-                            <a href="edit_profil.php">
-                                <button>Edit Profil</button>
+                            <a href="edit_profil.php" class="cta" >
+                                <button class="button" role="button">Edit Profil</button>
                             </a>
                         </div>
                     </div>

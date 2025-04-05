@@ -1,5 +1,5 @@
 :root {
---primary: #c0eba6;
+  --primary: #c0eba6;
   --secondary: #fff;
   --text-color: hsl(225, 52%, 30%);
   --body-font: "Montserrat", sans-serif;
@@ -48,7 +48,7 @@ nav {
 
 /* profile view */
 /* profile view 1 */
-.profile-view1 {
+.container-profile .profile-view1 {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -60,17 +60,24 @@ nav {
   align-items: center;
 }
 
-.profile-view1 .profil-sebelah-kiri {
-  width: 20%;
+.container-profile .profile-view1 .profilview-sebelah-kiri {
+  gap: 15px;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
-.profile-view1 .profil-sebelah-kiri img.profile-picture-view {
-  width: 150px;
-  height: 150px;
+.container-profile .profile-view1 .profilview-sebelah-kiri .img {
+  width: 214px;
+  height: 214px;
+}
+
+.container-profile .profile-view1 .profilview-sebelah-kiri .img img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -78,51 +85,76 @@ nav {
   -o-border-radius: 50%;
 }
 
-.profile-view1 .profil-sebelah-kiri .btn-edit {
+.container-profile .profile-view1 .profilview-sebelah-kiri .btn-edit {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
 }
 
-.profile-view1 .detail-profil {
+.profil-view1 .profilview-sebelah-kiri .btn-edit .cta .button {
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+.container-profile .profile-view1 .detail-profil {
   width: 80%;
 }
 
-.profile-view1 .detail-profil h2 {
+.container-profile .profile-view1 .detail-profil h2 {
   text-align: center;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.profile-view1 .detail-profil table {
+.container-profile .profile-view1 .detail-profil table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.profile-view1 .detail-profil table th {
+.container-profile .profile-view1 .detail-profil table th {
   color: #212529;
   font-weight: bold;
   padding: 10px;
   text-align: left;
 }
 
-.profile-view1 .detail-profil table td {
+.container-profile .profile-view1 .detail-profil table td {
   color: #212529;
   font-weight: 500;
   padding: 10px;
   text-align: left;
 }
 
-.profile-view1 .detail-profil table tr:nth-child(even) {
+.container-profile .profile-view1 .detail-profil table tr:nth-child(even) {
   background-color: transparent;
 }
 
-.profile-view1 .detail-profil table tr:nth-child(odd) {
+.container-profile .profile-view1 .detail-profil table tr:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* profile view 2 */
-.profile-view2 {
+.container-profile .profile-view2 {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -131,30 +163,30 @@ nav {
   height: 80vh;
 }
 
-.profile-view2 h2 {
+.container-profile .profile-view2 h2 {
   text-align: center;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.profile-view2 table {
+.container-profile .profile-view2 table {
   width: 100%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: black;
 }
 
-.profile-view2 table td {
+.container-profile .profile-view2 table td {
   padding: 5px;
   font-size: 4rem;
 }
 
-.profile-view2 .form-group img {
+.container-profile .profile-view2 .form-group img {
   max-width: 150px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.profile-view2 .form-group span {
+.container-profile .profile-view2 .form-group span {
   color: gray;
 }
 
@@ -171,4 +203,16 @@ nav {
 }
 .btn-save:hover {
   background-color: #0056b3;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="radio"],
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>notification</title>
+    <style>
+      .notif {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .notif.hidden {
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+      }
+
+      .notif.error {
+        background-color: #d9534f; /* Warna merah */
+        color: white;
+      }
+
+      .notif.success {
+        background-color: #5cb85c; /* Warna hijau */
+        color: white;
+      }
+
+      .notif button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="notif" class="notif hidden">
+      <span id="notif-message"></span>
+      <button id="notif-close" aria-label="Close">&times;</button>
+    </div>
+
+    <script>
+      function showNotif(message, type = "error") {
+        const notif = document.getElementById("notif");
+        const notifMessage = document.getElementById("notif-message");
+
+        notifMessage.textContent = message;
+
+        
+        notif.className = `notif ${type}`;
+        notif.classList.remove("hidden");
+
+        
+        setTimeout(() => {
+          hideNotif();
+        }, 3000);
+      }
+
+      function hideNotif() {
+        document.getElementById("notif").classList.add("hidden");
+      }
+
+      document
+        .getElementById("notif-close")
+        .addEventListener("click", hideNotif);
+    </script>
+  </body>
+</html>
