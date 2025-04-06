@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2025 at 02:09 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 06 Apr 2025 pada 05.13
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qualycheck122`
+-- Database: `qualycheck`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Struktur dari tabel `comment`
 --
 
 CREATE TABLE `comment` (
@@ -38,7 +38,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Struktur dari tabel `history`
 --
 
 CREATE TABLE `history` (
@@ -51,7 +51,7 @@ CREATE TABLE `history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Struktur dari tabel `product`
 --
 
 CREATE TABLE `product` (
@@ -65,7 +65,7 @@ CREATE TABLE `product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Struktur dari tabel `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -80,7 +80,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -88,23 +88,29 @@ CREATE TABLE `users` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
+  `profile_picture` varchar(1024) DEFAULT NULL,
+  `jenis_kelamin` varchar(16) DEFAULT NULL,
   `role` tinyint(1) DEFAULT 0,
   `created_at` datetime DEFAULT curtime()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`UserID`, `username`, `password`, `email`, `role`, `created_at`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin@123', 1, '2025-02-21 13:48:22');
+INSERT INTO `users` (`UserID`, `username`, `password`, `email`, `profile_picture`, `jenis_kelamin`, `role`, `created_at`) VALUES
+(1, 'admin', 'ce9b8106404041be58bb91ef03a2338cbea52ac316f3ea3dd80c6e76ed8d1072', 'admin@123', NULL, 'Misterius', 1, '2025-02-21 13:48:22'),
+(28, 'Aliezzar Wijaya', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'aliezzar42@gmail.com', NULL, 'Laki-laki', 0, '2025-03-31 09:55:22'),
+(31, 'Aliezzar Wijayaa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'e@gmail.com', NULL, 'laki-laki', 0, '2025-04-02 19:51:32'),
+(32, 'Ejar Gemink', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'ezzar@gmail.com', NULL, 'Laki-laki', 0, '2025-04-05 05:08:46'),
+(33, 'Daisuki', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'daisuki@gmail.com', NULL, 'Laki-laki', 0, '2025-04-06 06:24:32');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `comment`
+-- Indeks untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`CommentID`),
@@ -112,20 +118,20 @@ ALTER TABLE `comment`
   ADD KEY `ProductID` (`ProductID`);
 
 --
--- Indexes for table `history`
+-- Indeks untuk tabel `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`HistoryID`),
   ADD KEY `ProductID` (`ProductID`);
 
 --
--- Indexes for table `product`
+-- Indeks untuk tabel `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`);
 
 --
--- Indexes for table `reviews`
+-- Indeks untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
@@ -133,65 +139,65 @@ ALTER TABLE `reviews`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT untuk tabel `comment`
 --
 ALTER TABLE `comment`
   MODIFY `CommentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `history`
+-- AUTO_INCREMENT untuk tabel `history`
 --
 ALTER TABLE `history`
   MODIFY `HistoryID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT untuk tabel `product`
 --
 ALTER TABLE `product`
   MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `comment`
+-- Ketidakleluasaan untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `fk_comment_product` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`),
   ADD CONSTRAINT `fk_comment_user` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 
 --
--- Constraints for table `history`
+-- Ketidakleluasaan untuk tabel `history`
 --
 ALTER TABLE `history`
   ADD CONSTRAINT `fk_history_product` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`);
 
 --
--- Constraints for table `reviews`
+-- Ketidakleluasaan untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`UserID`) ON DELETE CASCADE,

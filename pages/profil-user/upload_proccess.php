@@ -64,6 +64,7 @@ function uploadImage() {
         $stmt->bind_param('si', $file_name, $id);
         $stmt->execute();
         $_SESSION['profile_picture'] = $file_name;
+        $_POST['profile_picture'] = $_SESSION['profile_picture'];
     } else {
         echo "Maaf terjadi kesalahan";
     }

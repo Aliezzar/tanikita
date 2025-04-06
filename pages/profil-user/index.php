@@ -1,13 +1,8 @@
 <?php
 session_start();
+include_once 'user_fetch.php';
 include_once '../../components/connection.php';
 
-$uid = isset($_GET['uid']) ? $_GET['uid'] : $_SESSION['UserID'];
-$query = $conn->prepare("SELECT *, SHA2(CAST(UserID AS CHAR), 256) AS hashed_id FROM users WHERE SHA2(CAST(UserID AS CHAR), 256) = ? LIMIT 1;");
-$query->bind_param("s", $uid);
-$query->execute();
-$result = $query->get_result();
-$user = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +30,7 @@ $user = $result->fetch_assoc();
                     <div class="profilview-sebelah-kiri">
                     <div class="img">                    
                         <?php if ($user['profile_picture'] != null) { ?>
-                        <img src="../../img/profile/<?=$_SESSION['profile_picture'];?>" alt="Profile Picture" class="profile-picture-view">
+                            <img id="image" src="../../img/profile/<?=$user['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">  
                         <?php } else { ?>
                         <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
                         <?php } ?>
@@ -80,35 +75,45 @@ $user = $result->fetch_assoc();
                 </div>
             <?php } elseif ($uid != $id_hash_user) { ?>
                 <div class="profile-view2">
-                    <h2>Edit Profil</h2>
-                    <table>
-                        <tr>
-                            <td>ID</td>
-                            <td>:</td>
-                            <td><?= htmlspecialchars($user['UserID']); ?></td>
-                        </tr>
-                        <tr>
-                            <td>Username</td>
-                            <td>:</td>
-                            <td><?= htmlspecialchars($user['username']); ?></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><?= htmlspecialchars($user['email']); ?></td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>Foto profil</td>
-                            <td>:</td>
-                            <td>
-                                <?php if (!empty($user['profile_picture'])) { ?>
-                                    <img src="uploads/<?= htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
-                                <?php } else { ?>
-                                    <span>Tidak ada foto profil</span>
-                                <?php } ?>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="profilview-sebelah-kiri">
+                    <div class="img">                    
+                        <?php if ($user['profile_picture'] != null) { ?>
+                            <img id="image" src="../../img/profile/<?=$user['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">  
+                        <?php } else { ?>
+                        <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
+                        <?php } ?>
+                    </div>
+                    </div>
+
+                    <div class="detail-profil">
+                        <h2>Profil Akun</h2>
+                        <table>
+                            <tr>
+                                <th><i class="fas fa-user-circle"></i> Detail User:</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th><i class="fas fa-id-badge"></i> Id Pengguna</th>
+                                <td><?= htmlspecialchars($user['UserID']); ?></td>
+                            </tr>
+                            <tr>
+                                <th><i class="fas fa-envelope"></i> Email</th>
+                                <td><?= htmlspecialchars($user['email']); ?></td>
+                            </tr>
+                            <tr>
+                                <th><i class="fas fa-user"></i> Nama Lengkap</th>
+                                <td><?= htmlspecialchars($user['username']); ?></td>
+                            </tr>
+                            <tr>
+                                <th><i class="fas fa-venus-mars"></i> Jenis Kelamin</th>
+                                <td><?php if ($user['jenis_kelamin'] == null) {
+                                        echo htmlspecialchars('Undefined');
+                                    } else {
+                                        echo htmlspecialchars($user['jenis_kelamin']);
+                                    } ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             <?php }
         } else { ?>

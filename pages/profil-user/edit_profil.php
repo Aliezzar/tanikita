@@ -7,14 +7,34 @@ include_once '../../components/notification.html';
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
     uploadDetailProfil();
     uploadImage();
-    $exit = header("Location: edit_profil.php?act=success");
-    exit($exit);
+
+    // cek apakah $_POST berubah
+    $current_post = $_POST;
+
+    if (isset($_SESSION['last_post'])) {
+        // Cek apakah data berubah
+        if ($_SESSION['last_post'] !== $current_post) {
+            header("Location: edit_profil.php?act=success");
+            exit();
+        } else {
+            header("Location: edit_profil.php?act=failed");
+            exit();
+        }
+    }
+
+    // nyimpen $_POST ke session 
+    $_SESSION['last_post'] = $current_post;
 }
 
 if (isset($_GET['act']) && $_GET['act'] === 'success') {
     echo "<script>
     let date = new Date();
     showNotif('Sukses mengedit profil ' + date.toLocaleString(), 'success');
+    </script>";
+} elseif (isset($_GET['act']) && $_GET['act'] === 'failed') {
+    echo "<script>
+    let date = new Date();
+    showNotif('Gagal mengupdate profil, belum ada pergantian ' + date.toLocaleString(), 'error');
     </script>";
 }
 
@@ -43,7 +63,7 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
                 <div class="profil-sebelah-kiri">
                     <label for="file_upload" style="width: 100%; height: 100%;">
                         <?php if ($_SESSION['profile_picture'] != null) { ?>
-                            <img id="image" src="../../img/profile/<?=$_SESSION['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">
+                            <img id="image" src="../../img/profile/<?= $_SESSION['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
                         <?php } else { ?>
                             <img id="image" src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-edit">
                         <?php } ?>
@@ -54,7 +74,7 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
                             <span class="text-hover">Edit Foto Profil</span>
                         </div>
                     </label>
-                    
+
                     <input type="file" onchange="loadFile(event)" id="file_upload" name="file_upload" style="display: none;" accept="image/*">
                 </div>
 
@@ -117,130 +137,14 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
     </section>
 
     <script src="js/script.js"></script>
+    <script>
+
+        if (window.location.search.includes('act=')) {
+            if (window.performance.navigation.type === 1) {
+                window.location.href = 'edit_profil.php';
+            }
+        }
+    </script>
 </body>
+
 </html>
-
-
-<!-- Success Pop up -->
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .center button {
-        padding: 10px 20px;
-        background: #fff;
-        color: #222;
-        border: 1px solid #222;
-        outline: none;
-        border-radius: 20px;
-        font-size: 16px;
-    }
-
-    .popup {
-        position: absolute;
-        top: -150%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0;
-        width: 450px;
-        background: #fff;
-        border-radius: 5px;
-        box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.15);
-        transition: top 0ms ease-in-out 200ms,
-            opacity 200ms ease-in-out 0ms,
-            transform 200ms ease-in-out 0ms;
-    }
-
-    .popup.active {
-        top: 50%;
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-        transition: top 0ms ease-in-out 0ms,
-            opacity 200ms ease-in-out 0ms,
-            transform 200ms ease-in-out 0ms;
-    }
-
-    .popup .head {
-        padding: 30px 20px;
-        background: #57af57;
-        text-align: center;
-    }
-
-    .popup .head .icon .box {
-        display: inline-block;
-        width: 80px;
-        height: 80px;
-        background: #f5f5f5;
-        font-size: 40px;
-        line-height: 80px;
-        color: #57af57;
-        border-radius: 50%;
-    }
-
-    .popup .body {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .popup .body h1 {
-        font-size: 25px;
-        margin-bottom: 10px;
-        color: #222;
-    }
-
-    .popup .body p {
-        font-size: 15px;
-        color: #555;
-        margin-bottom: 20px;
-    }
-
-    .popup .body .close-btn {
-        padding: 10px 20px;
-        border: 1px solid #888;
-        color: #888;
-        background: #fff;
-        border-radius: 20px;
-        font-size: 16px;
-        cursor: pointer;
-        outline: none;
-    }
-</style>
-
-<?php
-$redirectURL = "index.php?uid=" . hash('sha256', $_SESSION['UserID']) . "&status=success";
-?>
-
-<script>
-    document.querySelector("#open-popup").addEventListener("click", function() {
-        document.querySelector(".popup").classList.add("active");
-    });
-    document.querySelector(".popup .close-btn").addEventListener("click", function() {
-        document.querySelector(".popup").classList.remove("active");
-        window.location.href = "<?php echo $redirectURL; ?>";
-    });
-</script>
-
-<div class="popup">
-    <div class="head">
-        <div class="icon">
-            <div class="box">
-                <i class="fa fa-check"></i>
-            </div>
-        </div>
-    </div>
-    <div class="body">
-        <h1>Success</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button class="close-btn" name="close-btn">&times; Close</button>
-    </div>
-</div>
