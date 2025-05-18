@@ -6,9 +6,31 @@ if ($_SESSION['role'] == 1) {
 
     $id = $_GET['hapus'];
 
-    $result = mysqli_query($mysqli, "DELETE FROM users WHERE UserID=$id");
+    $sql1 = "DELETE FROM suka WHERE UserID = ?;";
+    $sql2 = "DELETE FROM komentar WHERE UserID = ?;";
+    $sql3 = "DELETE FROM users WHERE UserID = ?;";
 
-    header("Location:index.php");
+    $stmt1 = $mysqli->prepare($sql1);
+    $stmt2 = $mysqli->prepare($sql2);
+    $stmt3 = $mysqli->prepare($sql3);
+
+    $stmt1->bind_param("i", $id);
+    $stmt2->bind_param("i", $id);
+    $stmt3->bind_param("i", $id);
+
+    if ($stmt1->execute() && $stmt2->execute() && $stmt3->execute()) {
+        header("Location: index.php");
+    } else {
+        echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            }).then(function() {
+                window.location.href = 'index.php';
+            });
+        </script>";
+    }
 } else {
     header("Location: ../accessDenied.html");
     exit();

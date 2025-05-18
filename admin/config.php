@@ -2,7 +2,7 @@
 if ($_SESSION['role'] == 1) {
 
     $databaseHost = 'localhost';
-    $databaseName = 'qualycheck';
+    $databaseName = 'tanikita';
     $databaseUsername = 'root';
     $databasePassword = '';
 

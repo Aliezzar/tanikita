@@ -1,43 +1,7 @@
 <?php
 session_start();
-include_once 'upload_proccess.php';
+include_once 'upload_process.php';
 include_once '../../components/connection.php';
-include_once '../../components/notification.html';
-
-if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
-    uploadDetailProfil();
-    uploadImage();
-
-    // cek apakah $_POST berubah
-    $current_post = $_POST;
-
-    if (isset($_SESSION['last_post'])) {
-        // Cek apakah data berubah
-        if ($_SESSION['last_post'] !== $current_post) {
-            header("Location: edit_profil.php?act=success");
-            exit();
-        } else {
-            header("Location: edit_profil.php?act=failed");
-            exit();
-        }
-    }
-
-    // nyimpen $_POST ke session 
-    $_SESSION['last_post'] = $current_post;
-}
-
-if (isset($_GET['act']) && $_GET['act'] === 'success') {
-    echo "<script>
-    let date = new Date();
-    showNotif('Sukses mengedit profil ' + date.toLocaleString(), 'success');
-    </script>";
-} elseif (isset($_GET['act']) && $_GET['act'] === 'failed') {
-    echo "<script>
-    let date = new Date();
-    showNotif('Gagal mengupdate profil, belum ada pergantian ' + date.toLocaleString(), 'error');
-    </script>";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -54,29 +18,115 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Cropper.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+    <!-- Cropper.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 </head>
 
 <body>
+
+    <!-- jika post terkirim -->
+    <?php
+    include_once '../../components/notification.html';
+    if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
+        uploadDetailProfil();
+        uploadImage();
+
+        $current_post = $_POST;
+        unset($current_post['file_upload']);
+
+
+        $normalisasi_current_post = array_map('trim', $current_post);
+
+        if ($_SESSION['last_post']) {
+            $last_post_normalized = array_map('trim', $_SESSION['last_post']);
+
+            // Check if data has changed
+            if ($last_post_normalized !== $normalisasi_current_post) {
+                $_SESSION['last_post'] = $current_post; // Update session with new data
+                header("Location: edit_profil.php?act=success");
+                exit();
+            } else {
+                header("Location: edit_profil.php?act=failed");
+                exit();
+            }
+        }
+
+        // Store current POST data in session for the first time
+        $_SESSION['last_post'] = $current_post;
+        header("Location: edit_profil.php?act=success");
+        exit();
+    }
+
+    if (isset($_GET['act']) && $_GET['act'] === 'success') {
+        echo "<script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'Profil berhasil diperbarui!',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        });
+        </script>";
+    } elseif (isset($_GET['act']) && $_GET['act'] === 'failed') {
+        echo "<script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: 'Gagal memperbarui profil! Belum ada perubahan data.',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        });
+        </script>";
+    }
+    ?>
+    <!-- jika post terkirim end -->
+
     <form action="" method="POST" class="edit-profil" enctype="multipart/form-data">
         <section class="container-profile">
             <div class="profile-view1 profile-edit">
-                <div class="profil-sebelah-kiri">
-                    <label for="file_upload" style="width: 100%; height: 100%;">
-                        <?php if ($_SESSION['profile_picture'] != null) { ?>
-                            <img id="image" src="../../img/profile/<?= $_SESSION['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
-                        <?php } else { ?>
-                            <img id="image" src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-edit">
-                        <?php } ?>
-                        <div class="hover-effect" style="cursor: pointer;">
-                            <span class="icon-hover">
-                                <i class="fas fa-camera"></i>
-                            </span>
-                            <span class="text-hover">Edit Foto Profil</span>
-                        </div>
-                    </label>
+                <div class="profil-kiri-wrap">
+                    <div class="profil-sebelah-kiri">
+                        <label for="file_upload" style="width: 100%; height: 100%;">
+                            <?php if ($_SESSION['profile_picture'] != null) { ?>
+                                <img id="image" src="../../img/profile/<?= $_SESSION['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
+                            <?php } else { ?>
+                                <img id="image" src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-edit">
+                            <?php } ?>
+                            <div class="hover-effect" style="cursor: pointer;">
+                                <span class="icon-hover">
+                                    <i class="fas fa-camera"></i>
+                                </span>
+                                <span class="text-hover">Edit Foto Profil</span>
+                            </div>
+                        </label>
 
-                    <input type="file" onchange="loadFile(event)" id="file_upload" name="file_upload" style="display: none;" accept="image/*">
+                        <input type="file" id="file_upload" onchange="loadFile(event)" name="file_upload" style="display: none;" accept="image/*">
+                    </div>
                 </div>
+
+                <!-- crop -->
+                <div id="cropModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeCropModal()">&times;</span>
+                        <div class="crop-area">
+                            <img src="" style="max-width: 100%;" id="cropImage">
+                        </div>
+                        <button type="button" onclick="cropAndUpload()">Simpan</button>
+                        <input type="hidden" name="cropped_image" id="cropped_image">
+                        <button type="submit" name="save_cropped_image" style="display: none;" id="saveCroppedImageButton">Submit Cropped Image</button>
+                    </div>
+                </div>
+
 
                 <!-- detail -->
 
@@ -87,9 +137,8 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
                             <th><i class="fas fa-user-circle"></i> Edit Profil:</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <th><i class="fas fa-id-badge"></i> Id Pengguna</th>
-                            <td><?= htmlspecialchars($_SESSION['UserID']); ?></td>
+                        <th><i class="fas fa-id-badge"></i> Id Pengguna</th>
+                        <td><?= htmlspecialchars($_SESSION['UserID']); ?></td>
                         </tr>
                         <tr>
                             <th><i class="fas fa-user"></i> Nama Lengkap</th>
@@ -136,9 +185,95 @@ if (isset($_GET['act']) && $_GET['act'] === 'success') {
     </div>
     </section>
 
-    <script src="js/script.js"></script>
-    <script>
 
+
+    <script>
+        let cropper;
+        let selectedFile;
+
+        function loadFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const image = document.getElementById('cropImage');
+                    image.src = e.target.result;
+
+                    // show modal
+                    document.getElementById('cropModal').style.display = 'flex';
+
+                    // Init cropper
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+                    cropper = new Cropper(image, {
+                        aspectRatio: 1,
+                        viewMode: 1,
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function closeCropModal() {
+            document.getElementById('cropModal').style.display = 'none';
+            if (cropper) cropper.destroy();
+        }
+
+        function cropAndUpload() {
+            const size = 300;
+            const canvas = cropper.getCroppedCanvas({
+                width: size,
+                height: size,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high',
+            });
+
+            const circularCanvas = document.createElement('canvas');
+            circularCanvas.width = size;
+            circularCanvas.height = size;
+
+            const ctx = circularCanvas.getContext('2d');
+            ctx.clearRect(0, 0, size, size);
+
+            // Buat area lingkaran transparan
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+
+            ctx.drawImage(canvas, 0, 0, size, size);
+            ctx.restore();
+
+            // Hasil final: PNG dengan transparan di luar lingkaran
+            const dataUrl = circularCanvas.toDataURL('image/png');
+
+            // Preview langsung di profile
+            document.getElementById('image').src = dataUrl;
+
+             // Kirim ke hidden input buat form
+            const hiddenInput = document.getElementById('cropped_image');
+            if (hiddenInput) {
+                hiddenInput.value = dataUrl;
+            }
+
+            closeCropModal();
+        }
+
+
+
+        // javascript untuk menampilkan gambar sebelum submit
+
+        var showImage = function(event) {
+            var output = document.getElementById('image');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src);
+            }
+        };
+    </script>
+    <script>
         if (window.location.search.includes('act=')) {
             if (window.performance.navigation.type === 1) {
                 window.location.href = 'edit_profil.php';

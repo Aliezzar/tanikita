@@ -6,77 +6,6 @@ if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
-
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $sanitizeEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $password = hash('sha256', $_POST['password']); 
-    $cpassword = hash('sha256', $_POST['cpassword']);
-    $jenis_kelamin = $_POST['jenis_kelamin'];
-
-    if (filter_var($sanitizeEmail, FILTER_VALIDATE_EMAIL) && !empty($password)) {
-        $allowedDomains = [
-            'gmail.com',
-            'yahoo.com',
-            'outlook.com',
-            'hotmail.com',
-            'aol.com',
-            'icloud.com',
-            'protonmail.com',
-            'zoho.com',
-            'yandex.com',
-            'mail.com',
-            'gmx.com',
-            'apple.com',
-            'microsoft.com',
-            'amazon.com',
-            'facebook.com',
-            'twitter.com',
-            'qq.com',
-            '163.com',
-            'naver.com',
-            'daum.net',
-            'rambler.ru',
-            'rediffmail.com'
-        ];
-        $emailDomain = substr(strrchr($sanitizeEmail, "@"), 1);
-
-        if (!in_array($emailDomain, $allowedDomains)) {
-            echo "<script>alert('Domain email tidak diizinkan. Gunakanlah email terpercaya seperti Gmail, Yahoo, Outlook, dll.')</script>";
-            exit();
-        }
-
-        if ($password == $cpassword) {
-            $sql = "SELECT * FROM users WHERE email='$email' OR username='$username'";
-            $result = mysqli_query($conn, $sql);
-            if (!$result->num_rows > 0) {
-                $sql = "INSERT INTO users (username, email, password, jenis_kelamin)
-                        VALUES ('$username', '$email', '$password', '$jenis_kelamin')";
-                $result = mysqli_query($conn, $sql);
-                if ($result) {
-                    echo "<script>
-                alert('Selamat, pendaftaran berhasil.');
-                window.location = 'index.php';
-            </script>";
-                    $username = "";
-                    $email = "";
-                    $_POST['password'] = "";
-                    $_POST['cpassword'] = "";
-                    $jenis_kelamin = "";
-                } else {
-                    echo "<script>alert('Maaf, terjadi kesalahan.')</script>";
-                }
-            } else {
-                echo "<script>alert('Ups, email atau username Sudah Terdaftar.')</script>";
-            }
-        } else {
-            echo "<script>alert('Password tidak sesuai.')</script>";
-        }
-    } else {
-        echo "<script>alert('Email tidak valid atau password kosong.')</script>";
-    }
-}
 ?>
 
 
@@ -90,6 +19,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/index.css">
     <title>Pendaftaran</title>
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -100,32 +32,36 @@ if (isset($_POST['submit'])) {
                 daftar
             </p>
             <div class="input-group">
-                <input type="text" placeholder="Nama Lengkap" name="username" value="<?php echo (isset($username)?$username:''); ?>" required>
+                <input type="text" placeholder="Nama Lengkap" name="username" value="<?php echo (isset($username) ? $username : ''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="<?php echo (isset($email)?$email:''); ?>" required>
+                <input type="email" placeholder="Email" name="email" value="<?php echo (isset($email) ? $email : ''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo (isset($_POST['password'])?$_POST['password']:''); ?>" required>
+                <input type="password" placeholder="Password" name="password" value="<?php echo (isset($_POST['password']) ? $_POST['password'] : ''); ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Konfirmasi Password" name="cpassword" value="<?php echo (isset($_POST['cpassword'])?$_POST['cpassword']:''); ?>" required>
+                <input type="password" placeholder="Konfirmasi Password" name="cpassword" value="<?php echo (isset($_POST['cpassword']) ? $_POST['cpassword'] : ''); ?>" required>
             </div>
             <div class="input-group-jenis-kelamin">
-                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <label>
-                        <input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki
-                    </label>
-                    <label>
-                        <input type="radio" name="jenis_kelamin" value="Perempuan" required> Perempuan
-                    </label>
-               
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <label>
+                    <input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki
+                </label>
+                <label>
+                    <input type="radio" name="jenis_kelamin" value="Perempuan" required> Perempuan
+                </label>
+
             </div>
             <div class="input-group">
                 <button name="submit" class="btn">Daftar</button>
             </div>
             <p class="login-register-text">Sudah punya akun? <a href="index.php">Login</a>.</p>
         </form>
+        <?php
+        include_once 'fungsi.php';
+        checkRegister();
+        ?>
     </section>
 
 </body>

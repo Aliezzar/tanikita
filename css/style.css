@@ -125,7 +125,7 @@ body {
   margin-bottom: 3rem;
 }
 
-.informasi .row .informasi-imcanvasg {
+.informasi .row .informasi-img {
   flex: 1 1 40%;
 }
 
@@ -208,30 +208,3 @@ body {
 }
 
 /* informasi end */
-
-/* diagram */
-.data {
-  color: black;
-  display: flex;
-  height: 80vh;
-  padding-top: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-.data .row {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.data .row .content {
-  max-width: 48%;
-}
-
-.data .row .diagram-parent {
-  width: 360px;
-  height: 360px;
-}
-
-/* diagram end */

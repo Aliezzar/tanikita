@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QualyCheck</title>
-    <link rel="stylesheet" href="/qualycheck/css/navbar.css">
+    <title>TaniKita</title>
+    <link rel="stylesheet" href="/tanikita/css/navbar.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
@@ -20,16 +20,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
         rel="stylesheet">
+
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
 
     <nav style="color: black;">
-        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/index.php" class="logo">Qualy<span>Check</span></a>
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/index.php" class="logo">Tani<span>Kita</span></a>
         <ul style="color: black;">
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/#home">Home</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/#informasi">Informasi</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/about.php">Tentang Kami</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/#home">Home</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/#informasi">Informasi</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/aboutMe/index.php">Tentang Kami</a></li>
             <?php if (isset($_SESSION['username'])) { ?>
                 <li>
                     <div class="container">
@@ -44,12 +48,12 @@
                             </a>
 
                             <ul class="dropdown__menu">
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/qualycheck/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256",$_SESSION['UserID'])) ?>'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256",$_SESSION['UserID'])) ?>'">
                                     <i class="ri-user-3-line dropdown__icon"></i>
                                     <span class="dropdown__name">Profil</span>
                                 </li>
 
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/login-register/logout.php'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/login-register/logout.php'">
                                     <i class="ri-logout-box-line dropdown__icon"></i>
                                     <span class="dropdown__name">Log out</span>
                                 </li>
@@ -79,7 +83,7 @@
                 </li>
             <?php } else { ?>
                 <li>
-                    <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/qualycheck/pages/login-register">Sign in / Sign up</a>
+                    <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/login-register">Sign in / Sign up</a>
                 </li>
             <?php } ?>
         </ul>
@@ -91,4 +95,4 @@
         </div>
     </nav>
 
-    <script src="/qualycheck/javascript/navbar.js"></script>
+    <script src="/tanikita/javascript/navbar.js"></script>

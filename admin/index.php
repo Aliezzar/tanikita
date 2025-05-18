@@ -14,7 +14,7 @@ if ($_SESSION['role'] == 1) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Qualycheck Admin</title>
+        <title>TaniKita Admin</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <style>
             * {
@@ -130,6 +130,9 @@ if ($_SESSION['role'] == 1) {
                 color: #0056b3;
             }
         </style>
+        <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body style="background-color: #f3f4f6;">
@@ -183,9 +186,20 @@ if ($_SESSION['role'] == 1) {
                                 <a href='edit.php?id=<?php echo $user_data["UserID"]; ?>'>Edit</a> |
                                 <script>
                                     function deleteNotif() {
-                                        if (confirm("yakin mau menghapus akun ini?")) {
-                                            window.location.href = 'delete.php?hapus=<?= $user_data["UserID"]; ?>'
-                                        }
+                                        Swal.fire({
+                                            title: 'Apakah Anda yakin?',
+                                            text: "Data yang dihapus tidak dapat dikembalikan!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Ya, hapus!',
+                                            cancelButtonText: 'Batal'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = 'delete.php?hapus=<?= $user_data["UserID"]; ?>';
+                                            }
+                                        });
                                     }
                                 </script>
                                 <a onclick="deleteNotif()" style="cursor: pointer;">Delete</a>

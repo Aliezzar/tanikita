@@ -1,5 +1,6 @@
 <?php
 include_once '../../components/connection.php';
+// digunakan untuk mengambil data pengguna dari database berdasarkan ID pengguna yang diberikan.
 
 
 $uid = isset($_GET['uid']) ? $_GET['uid'] : $_SESSION['UserID'];

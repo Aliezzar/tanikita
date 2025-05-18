@@ -1,44 +1,11 @@
 <?php
 include 'connection.php';
 session_start();
+include_once 'fungsi.php';
 
 if (isset($_SESSION['username'])) {
   header("Location: berhasil_login.php");
   exit();
-}
-
-if (isset($_POST['submit'])) {
-  $emailUsername = $_POST['email-username'];
-  $password = hash('sha256', $_POST['password']);
-
-  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE (email = ?  OR username = ?) AND password = ?");
-  mysqli_stmt_bind_param($stmt, "sss", $emailUsername, $emailUsername, $password);
-  mysqli_stmt_execute($stmt);
-  $result = mysqli_stmt_get_result($stmt);
-  
-
-  if ($result->num_rows > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['username'] = $row['username'];
-    $_SESSION['role'] = $row['role'];
-    $_SESSION['email'] = $row['email'];
-    $_SESSION['UserID'] = $row['UserID'];
-    $_SESSION['jenis_kelamin'] = $row['jenis_kelamin'];
-    $_SESSION['profile_picture'] = $row['profile_picture'];
-
-    session_regenerate_id(true);
-    
-    if ($row['role'] == 1) {
-      header("Location: ../../admin");
-    } else {
-      header("Location: berhasil_login.php");
-    }
-    exit();
-  } else {
-    echo "<script>
-     alert('Email, nama atau password salah.');
-     </script>";
-  }
 }
 ?>
 
@@ -52,6 +19,9 @@ if (isset($_POST['submit'])) {
   <!-- font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="css/index.css">
+  <!-- Sweetalert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -69,6 +39,9 @@ if (isset($_POST['submit'])) {
       </div>
       <p class="login-register-text">Belum punya akun? <a href="register.php">Daftar</a>.</p>
     </form>
+    <?php
+    checkLogin();
+    ?>
   </section>
 </body>
 

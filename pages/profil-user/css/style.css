@@ -272,3 +272,30 @@ input[type="text"] {
   border-radius: 5px;
   box-sizing: border-box;
 }
+
+/* responsive */
+
+@media screen and (max-width: 768px) { 
+  .container-profile {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-profile .profile-view1 {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80vw;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    font-size: small;
+  }
+  .container-profile .profile-view1 * {
+    font-size: small;
+  }
+}

@@ -10,20 +10,31 @@ function href(url) {
 
 
 function deleteAccount() {
-    if (confirm('Apakah kamu yakin ingin menghapus akun ini?')) {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/pages/login-register/deleteAccount.php';
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: "Akun ini akan dihapus secara permanen!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/tanikita/pages/login-register/deleteAccount.php';
 
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'deleteAccount';
-        input.value = 'true';
-        form.appendChild(input);
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'deleteAccount';
+            input.value = 'true';
+            form.appendChild(input);
 
-        document.body.appendChild(form);
-        form.submit();
-    }
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
 }
 
 

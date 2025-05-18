@@ -21,25 +21,25 @@ include_once '../../components/connection.php';
 </head>
 
 <body class="profile_page">
-    <?php include '../../components/navbar.php'; $id_hash_user = hash('sha256', $_SESSION['UserID']); ?>
+    <?php include '../../components/navbar.php';
+    $id_hash_user = hash('sha256', $_SESSION['UserID']); ?>
 
     <section class="container-profile">
         <?php if ($user) {
             if ($uid == $id_hash_user) { ?>
                 <div class="profile-view1">
                     <div class="profilview-sebelah-kiri">
-                    <div class="img">                    
-                        <?php if ($user['profile_picture'] != null) { ?>
-                            <img id="image" src="../../img/profile/<?=$user['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">  
-                        <?php } else { ?>
-                        <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
-                        <?php } ?>
-                    </div>
+                        <div class="img">
+                            <?php if ($user['profile_picture'] != null) { ?>
+                                <img id="image" src="../../img/profile/<?= $user['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
+                            <?php } else { ?>
+                                <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
+                            <?php } ?>
+                        </div>
                         <div class="btn-edit">
-                            <a href="edit_profil.php" class="cta" >
+                            <a href="edit_profil.php" class="cta">
                                 <button class="button" role="button">Edit Profil</button>
                             </a>
-                            <!-- style="background-color: blue; color: white; border-radius: 20px; width: 80px;" -->
                         </div>
                     </div>
 
@@ -76,13 +76,13 @@ include_once '../../components/connection.php';
             <?php } elseif ($uid != $id_hash_user) { ?>
                 <div class="profile-view2">
                     <div class="profilview-sebelah-kiri">
-                    <div class="img">                    
-                        <?php if ($user['profile_picture'] != null) { ?>
-                            <img id="image" src="../../img/profile/<?=$user['profile_picture'];?>" alt="Profile Picture" class="profile-picture-edit">  
-                        <?php } else { ?>
-                        <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
-                        <?php } ?>
-                    </div>
+                        <div class="img">
+                            <?php if ($user['profile_picture'] != null) { ?>
+                                <img id="image" src="../../img/profile/<?= $user['profile_picture']; ?>" alt="Profile Picture" class="profile-picture-edit">
+                            <?php } else { ?>
+                                <img src="../../img/profile/default.png" alt="Profile Picture" class="profile-picture-view"> >
+                            <?php } ?>
+                        </div>
                     </div>
 
                     <div class="detail-profil">

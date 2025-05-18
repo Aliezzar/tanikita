@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "qualycheck";
+$db = "tanikita";
 $conn = mysqli_connect($host, $user, $pass, $db);
 $mysqli = mysqli_connect($host,  $user, $pass, $db);
 

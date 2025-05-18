@@ -219,7 +219,6 @@
     }
 </style>
 
-
 <script>
     function deleteAccount() {
         if (confirm('Apakah kamu yakin ingin menghapus akun ini?')) {
@@ -255,7 +254,7 @@
 </script>
 
 <nav style="color: black;">
-    <a href="../.." class="logo">Qualy<span>Check</span></a>
+    <a href="../.." class="logo">Tani<span>Kita</span></a>
     <ul style="color: black;">
         <li><a href="../../#home">Home</a></li>
         <li><a href="../../#informasi">informasi</a></li>

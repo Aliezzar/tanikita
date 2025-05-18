@@ -166,6 +166,9 @@ if ($_SESSION['role'] == 1) {
                 transition: 200ms;
             }
         </style>
+        <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body>
@@ -213,8 +216,16 @@ if ($_SESSION['role'] == 1) {
             $result = mysqli_query($mysqli, "INSERT INTO users(username, email, password, role) VALUES('$username', '$email', '$password', '$role')");
         ?>
             <script>
-                alert("User added successfully");
-                window.location = "index.php";
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'User added successfully',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = "index.php";
+                    }
+                });
             </script>
         <?php
         }
