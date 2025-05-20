@@ -7,7 +7,7 @@ if ($_SESSION['role'] == 1) {
     ini_set('display_errors', 1);
 
 
-    include_once("config.php");
+    include_once("../components/connection.php");
 
     if (isset($_POST['update'])) {
         $id = $_POST['UserID'];

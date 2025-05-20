@@ -38,7 +38,11 @@ if (!isset($_SESSION['username'])) {
     <section class="container-logout">
         <h1>Selamat Datang <?php echo $_SESSION['username']; ?>!</h1>
         <div class="input-group">
-            <a href="../../index.php" style="color: white; text-decoration: none;"><button class="btn">Kembali ke mainpage</button></a>
+            <?php if ($_SESSION['role'] == 1) { ?>
+                <a href="../../admin/index.php" style="color: white; text-decoration: none;"><button class="btn">Kembali ke panel admin</button></a>
+            <?php } else { ?>
+                <a href="../../index.php" style="color: white; text-decoration: none;"><button class="btn">Kembali ke mainpage</button></a>
+            <?php } ?>
         </div>
         <form action="logout.php" method="POST" class="login-email">
             <div class="input-group">

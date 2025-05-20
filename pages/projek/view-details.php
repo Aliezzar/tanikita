@@ -7,6 +7,11 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
+if (!isset($_GET['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $PostID = $_GET['id'];
 
 $sql = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post.PostID = ? GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";

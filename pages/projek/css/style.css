@@ -65,9 +65,8 @@ nav {
 }
 
 .banner-section {
-  margin-top: 30px;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 0;
   background-color: #f9f9f9;
 }
 
@@ -170,7 +169,7 @@ nav {
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-.card-header .containerImg {  
+.card-header .containerImg {
   height: 480px;
   flex: 1;
   display: flex;
@@ -193,17 +192,32 @@ nav {
   align-items: center;
   padding: 10px;
   background-color: #f5f5f5;
+  justify-content: space-between;
 }
 
-.card-wrapper .card .card-header .card-header-content .avatar {
+.card-wrapper .card .card-header .card-header-content .profil-kiri {
+  display: flex;
+  align-items: center;
+}
+
+.card-wrapper .card .card-header .card-header-content .profil-kiri .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-.card-wrapper .card .card-header .card-header-content .username {
+.card-wrapper .card .card-header .card-header-content .profil-kiri .username {
   font-weight: bold;
   margin-left: 10px;
+}
+
+.card-wrapper .card .card-header .card-header-content .profil-kanan {
+  cursor: pointer;
+}
+
+.card-wrapper .card .card-header .card-header-content .profil-kanan .icon {
+  color: black;
+  font-size: 20px;
 }
 
 .card-body {
@@ -237,3 +251,105 @@ nav {
 }
 
 /* card end */
+
+.overlay-laporan {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+  animation: fadein 1.5s ease-in-out;
+  -webkit-animation: fadein 1.5s ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+.overlay-laporan .laporan-container {
+  color: black;
+  width: 550px;
+  min-height: 400px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overlay-laporan .laporan-container .laporan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.overlay-laporan .laporan-container .laporan-body {
+  padding: 10px;
+}
+.overlay-laporan .laporan-container .laporan-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overlay-laporan .laporan-container .laporan-body form textarea {
+  padding: 5px 10px;
+}
+
+
+.overlay-laporan .laporan-container .laporan-body form .button-wrapper {
+  margin-top: 20px;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.overlay-laporan
+  .laporan-container
+  .laporan-body
+  form
+  .button-wrapper
+  .btn-submit {
+  width: 30%;
+  padding: 8px;
+  background-color: #00bfa6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.overlay-laporan
+  .laporan-container
+  .laporan-body
+  form
+  .button-wrapper
+  .btn-batal {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  padding: 8px;
+}

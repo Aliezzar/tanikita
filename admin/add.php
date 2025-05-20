@@ -219,7 +219,7 @@ if ($_SESSION['role'] == 1) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'User added successfully',
+                    text: 'Sukses menambahkan user baru',
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.isConfirmed) {

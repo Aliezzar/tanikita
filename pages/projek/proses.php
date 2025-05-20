@@ -181,6 +181,29 @@ if ($_POST['submit'] == 'like') {
 
 include_once('../../components/notification.html');
 
+if ($_POST['submit'] == 'laporan') {
+    include_once '../../components/connection.php';
+    $alasan = $_POST['alasan'];
+    $id_post = $_POST['post_id'];
+    $user_id_uploader = $_POST['user_id'];
+    $id_user = $_SESSION['UserID'];
+
+    $query = 'INSERT INTO `laporan_pelanggaran_postingan`(`PostID`, `UserID_pelapor`, `UserID_uploader`, `isi_laporan`) VALUES (?, ?, ?, ?)';
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('iiis', $id_post, $id_user, $user_id_uploader, $alasan);
+    if ($stmt->execute()) {
+        $query_history = $conn->prepare("INSERT INTO history (UserID, aksi) VALUES (?, ?)");
+        $aksi = 'melaporkan postingan dengan alasan ' . '"' . $alasan . '"';
+        $query_history->bind_param('is', $id_user,  $aksi);
+        $query_history->execute();
+        header('Location: index.php?success=' . strval(hash('sha256', 'laporan')));
+        exit;
+    } else {
+        echo "<script>alert('gagal mengirim laporan, kami mohon maaf');window.location.href = 'index.php';</script>";
+        exit;
+    }
+}
+
 
 if ($_POST['submit'] == 'tambahkan') {
     $name = $_POST['post_name'];

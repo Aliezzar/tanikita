@@ -35,7 +35,12 @@ include_once '../../components/connection.php';
     include_once '../../components/notification.html';
     if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['update_profile'])) {
         uploadDetailProfil();
-        uploadImage();
+
+        $isFileUploaded = isset($_FILES['file_upload']) && $_FILES['file_upload']['error'] === UPLOAD_ERR_OK;
+
+        if ($isFileUploaded) {
+            uploadImage(); 
+        }
 
         $current_post = $_POST;
         unset($current_post['file_upload']);
@@ -46,9 +51,9 @@ include_once '../../components/connection.php';
         if ($_SESSION['last_post']) {
             $last_post_normalized = array_map('trim', $_SESSION['last_post']);
 
-            // Check if data has changed
+            
             if ($last_post_normalized !== $normalisasi_current_post) {
-                $_SESSION['last_post'] = $current_post; // Update session with new data
+                $_SESSION['last_post'] = $current_post; 
                 header("Location: edit_profil.php?act=success");
                 exit();
             } else {
@@ -57,7 +62,7 @@ include_once '../../components/connection.php';
             }
         }
 
-        // Store current POST data in session for the first time
+        
         $_SESSION['last_post'] = $current_post;
         header("Location: edit_profil.php?act=success");
         exit();
@@ -252,7 +257,7 @@ include_once '../../components/connection.php';
             // Preview langsung di profile
             document.getElementById('image').src = dataUrl;
 
-             // Kirim ke hidden input buat form
+            // Kirim ke hidden input buat form
             const hiddenInput = document.getElementById('cropped_image');
             if (hiddenInput) {
                 hiddenInput.value = dataUrl;
