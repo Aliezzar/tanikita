@@ -141,7 +141,7 @@ $result = $conn->query($query);
 
                   <?php if ($row['UserID'] ==  $_SESSION['UserID'] || $_SESSION['role'] == 1) { ?>
                     <a href="./edit.php?post_id=<?= $row['PostID']; ?>" class="btn">
-                      Edit Produk
+                      Edit Postingan
                     </a>
                     <a href="javascript:void(0);" onclick="yakin(<?= htmlspecialchars($row['PostID']); ?>, '<?= htmlspecialchars(strval($row['post_name'])); ?>', '../../img/post/<?= $row['image']; ?>')"
                       class="btn" style="background-color: red; margin-top: 10px;">
@@ -220,7 +220,7 @@ $result = $conn->query($query);
 
                 <?php if ($row['UserID'] ==  $_SESSION['UserID'] || $_SESSION['role'] == 1) { ?>
                   <a href="./edit.php?post_id=<?= $row['PostID']; ?>" class="btn">
-                    Edit Produk
+                    Edit Postingan
                   </a>
                   <a href="javascript:void(0);" onclick="yakin(<?= htmlspecialchars($row['PostID']); ?>, '<?= htmlspecialchars(strval($row['post_name'])); ?>', '../../img/post/<?= $row['image']; ?>')" class="btn" style="background-color: red; margin-top: 10px;">
                     Hapus

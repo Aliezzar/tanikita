@@ -261,7 +261,7 @@ if ($_POST['submit'] == 'tambahkan') {
             $queryHistory->close();
 
 
-            echo "<script>showNotif('berhasil menambahkan produk', 'success');</script>";
+            echo "<script>showNotif('berhasil menambahkan post', 'success');</script>";
             header('Location: index.php');
             flush();
         }

@@ -27,7 +27,6 @@ $result = $query->get_result();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaniKita-Postingan saya</title>
   <!-- css -->
-  <link rel="stylesheet" href="../css/sidebar.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -137,7 +136,7 @@ $result = $query->get_result();
 
                 <?php if ($row['UserID'] ==  $_SESSION['UserID'] || $_SESSION['role'] == 1) { ?>
                   <a href="../edit.php?post_id=<?= $row['PostID']; ?>" class="btn">
-                    Edit Produk
+                    Edit Postingan
                   </a>
                   <a href="javascript:void(0);" onclick="yakin(<?= htmlspecialchars($row['PostID']); ?>, '<?= htmlspecialchars(strval($row['post_name'])); ?>', '../../../img/post/<?= $row['image']; ?>')" class="btn" style="background-color: red; margin-top: 10px;">
                     Hapus

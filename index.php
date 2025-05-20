@@ -56,7 +56,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
 
         <div class="row">
             <div class="informasi-img">
-                <img src="img/petani-digital.png" alt="Produk Pertanian">
+                <img src="img/petani-digital.png" alt="Foto petani-digital">
             </div>
             <div class="content">
                 <h3>Gabung dan Temukan Komunitas Petani Digital!</h3>

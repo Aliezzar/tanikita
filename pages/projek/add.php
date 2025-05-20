@@ -10,7 +10,7 @@ include_once('../../components/connection.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambahkan Produk</title>
+    <title>Tambahkan Postingan</title>
     <style>
         body {
             color: #000;

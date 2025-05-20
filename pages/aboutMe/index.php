@@ -24,7 +24,7 @@ session_start();
             <img src="../../img/petani-digital.png" alt="">
             <div class="content">
                 <h1>Apa tujuan dari website TaniKita?</h1>
-                <p>Website ini bertujuan untuk menjadi platform sederhana yang menghubungkan petani dengan petani, maupun petani dengan masyarakat, berbagi informasi seputar pertanian, dan mempromosikan produk lokal secara lebih luas.</p>
+                <p>Website ini bertujuan untuk menjadi platform sederhana yang menghubungkan petani dengan petani, maupun petani dengan masyarakat, berbagi informasi seputar pertanian, dan mempromosikan produk lokal secara lebih luas bahkan dapat memposting kehidupan dan perjalanan sebagai petani.</p>
             </div>
         </div>
         <br> <br> <br>
