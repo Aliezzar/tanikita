@@ -1,9 +1,31 @@
 <?php
 session_start();
 
+if ($_POST['submit'] == 'delete_history') {
+    include_once '../../components/connection.php';
+    $UserID = $_POST['id_user'];
+    $HistoryID = $_POST['id_history'];
+
+    $query = "DELETE FROM history WHERE UserID = ? AND HistoryID = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('ii', $UserID, $HistoryID);
+    if ($stmt->execute()) {
+        echo json_encode([
+            "success" => true,
+            "message" => "none"
+        ]);
+        exit;
+    } else {
+        echo json_encode([
+            "success" => false
+        ]);
+        exit;
+    }
+}
+
 if ($_POST['submit'] == 'editKomentar') {
     include_once('../../components/connection.php');
-    $id_komentar = $_POST['KomentarID'];
+    $id_komentar = $_POST['KomentarID']; 
     $id_user = $_POST['UserID'];
     $id_post = $_POST['PostID'];
     $isi_komentar_update = $_POST['updateKomentarValue'];

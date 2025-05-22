@@ -72,9 +72,23 @@ $result = $query->get_result();
       </section>
         <!-- list history -->
         <div class="history-container">
+          <style>
+            .kanan {
+              display: flex;
+              gap: 10px;
+            }
+
+            .kanan .fa-xmark {
+              color: red;
+            }
+          </style>
           <?php while ($row = $result->fetch_assoc()) { ?>
-            <div class="content-history">
-              <h1><?= $row['aksi']; ?></h1><p><?= $row['tanggal']; ?></p>
+            <div class="content-history" id="content-<?= $row['HistoryID']; ?>" style="display: flex;">
+              <h1><?= $row['aksi']; ?></h1>
+              <div class="kanan">
+              <p><?= $row['tanggal']; ?></p>
+              <p onclick="hapusHistoriKonten(<?= $row['UserID']; ?>, <?= $row['HistoryID']; ?>)" style="cursor: pointer;"><i class="fas fa-xmark"></i></p>
+              </div>
             </div>
           <?php } ?>
         </div>
@@ -93,6 +107,26 @@ $result = $query->get_result();
     }
 
     window.addEventListener("scroll", ifSidebarScroll);
+  </script>
+<!-- AJAX -->
+  <script>
+    function hapusHistoriKonten(id_user, id_history) {
+      fetch('../proses.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `submit=delete_history&id_user=${id_user}&id_history=${id_history}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById(`content-${id_history}`).style.display = "none";
+        } else {
+          alert('Maaf, terjadi kesalahan, harap cek koneksi internet');window.location.href = 'index.php';
+        }
+      })
+    }
   </script>
 </body>
 

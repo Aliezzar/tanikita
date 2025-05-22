@@ -31,8 +31,9 @@ if (isset($_SESSION['username'])) {
       <div class="input-group">
         <input type="text" placeholder="Nama lengkap atau Email" name="email-username" required>
       </div>
-      <div class="input-group">
-        <input type="password" placeholder="Password" name="password" required>
+      <div class="input-group pwd">
+        <input type="password" placeholder="Password" name="password" id="pwd" required>
+        <input type="checkbox" class="pwd-checkbox" onclick="pwd.type = this.checked ? 'text' : 'password'">
       </div>
       <div class="input-group">
         <button name="submit" class="btn">Login</button>

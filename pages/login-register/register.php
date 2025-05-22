@@ -37,11 +37,13 @@ if (isset($_SESSION['username'])) {
             <div class="input-group">
                 <input type="email" placeholder="Email" name="email" value="<?php echo (isset($email) ? $email : ''); ?>" required>
             </div>
-            <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo (isset($_POST['password']) ? $_POST['password'] : ''); ?>" required>
+            <div class="input-group pwd">
+                <input type="password" id="pwd" placeholder="Password" name="password" value="<?php echo (isset($_POST['password']) ? $_POST['password'] : ''); ?>" required>
+                <input type="checkbox" class="pwd-checkbox" onclick="pwd.type = this.checked ? 'text' : 'password'">
             </div>
-            <div class="input-group">
-                <input type="password" placeholder="Konfirmasi Password" name="cpassword" value="<?php echo (isset($_POST['cpassword']) ? $_POST['cpassword'] : ''); ?>" required>
+            <div class="input-group pwd">
+                <input type="password" placeholder="Konfirmasi Password" id="cpwd" name="cpassword" value="<?php echo (isset($_POST['cpassword']) ? $_POST['cpassword'] : ''); ?>" required>
+                <input type="checkbox" class="pwd-checkbox" onclick="cpwd.type = this.checked ? 'text' : 'password'">
             </div>
             <div class="input-group-jenis-kelamin">
                 <label for="jenis_kelamin">Jenis Kelamin</label>

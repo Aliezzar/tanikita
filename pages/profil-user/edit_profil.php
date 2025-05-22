@@ -240,8 +240,6 @@ include_once '../../components/connection.php';
 
             const ctx = circularCanvas.getContext('2d');
             ctx.clearRect(0, 0, size, size);
-
-            // Buat area lingkaran transparan
             ctx.save();
             ctx.beginPath();
             ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
@@ -250,14 +248,8 @@ include_once '../../components/connection.php';
 
             ctx.drawImage(canvas, 0, 0, size, size);
             ctx.restore();
-
-            // Hasil final: PNG dengan transparan di luar lingkaran
             const dataUrl = circularCanvas.toDataURL('image/png');
-
-            // Preview langsung di profile
             document.getElementById('image').src = dataUrl;
-
-            // Kirim ke hidden input buat form
             const hiddenInput = document.getElementById('cropped_image');
             if (hiddenInput) {
                 hiddenInput.value = dataUrl;

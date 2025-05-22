@@ -2,6 +2,7 @@
 session_start();
 include_once('../../components/connection.php');
 
+$query = "SELECT * FROM post";
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,9 @@ include_once('../../components/connection.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambahkan Postingan</title>
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
     <style>
         body {
             color: #000;
@@ -64,12 +68,24 @@ include_once('../../components/connection.php');
         <label>Deskripsi:</label>
         <textarea name="description" rows="4" required></textarea>
 
-        <label>Gambar:</label>
+        <label>Foto:</label>
         <input type="file" name="gambar_postingan" accept="image/*" required>
 
         <input type="submit" name="submit" value="tambahkan">
         <a href="index.php">← Kembali ke dashboard</a>
     </form>
+
+    <div id="cropModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCropModal()">&times;</span>
+            <div class="crop-area">
+                <img src="" style="max-width: 100%;" id="cropImage">
+            </div>
+            <button type="button" onclick="cropAndUpload()">Simpan</button>
+            <input type="hidden" name="cropped_image" id="cropped_image">
+            <button type="submit" name="save_cropped_image" style="display: none;" id="saveCroppedImageButton">Submit Cropped Image</button>
+        </div>
+    </div>
 </body>
 
 </html>
