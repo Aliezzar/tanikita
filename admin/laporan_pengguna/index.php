@@ -46,7 +46,8 @@ l.isi_laporan,
 l.tanggal_waktu,
 u.username,
 p.post_name,
-p.description
+p.description,
+p.image
 FROM `laporan_pelanggaran_postingan` l 
 INNER JOIN users u ON l.UserID_pelapor = u.UserID
 INNER JOIN post p ON l.PostID = p.PostID;
@@ -163,10 +164,18 @@ $result = $conn->query($query);
             align-items: center;
         }
 
-        .batal-btn {
+        .view-laporan-container a.hapus {
             background-color: red;
             color: white;
-            padding: 5px;
+        }
+
+        .batal-btn {
+            background-color: grey;
+            font-weight: bold;
+            color: white;
+            padding: 4px;
+            height: 36px;
+            width: 70px;
             border-radius: 4px;
             border: none;
             cursor: pointer;
@@ -210,7 +219,7 @@ $result = $conn->query($query);
                                 <td class="panjang"><?= $row['description']; ?></td>
                                 <td>
                                     <div class="button-cta">
-                                        <a href="hapus_post.php?id_post=<?= $row['PostID']; ?>&post_name=<?= $row['post_name']; ?>&id_uploader=<?= intval($row['UserID_uploader']); ?>&id_pelapor=<?= $row['UserID_pelapor']; ?>"><i class="fas fa-trash" style="color: red;"></i>Hapus Postingan</a>
+                                        <a href="hapus_post.php?id_post=<?= $row['PostID']; ?>&post_name=<?= $row['post_name']; ?>&id_uploader=<?= intval($row['UserID_uploader']); ?>&id_pelapor=<?= $row['UserID_pelapor']; ?>&lokasi=../../img/post/<?= $row['image'] ?>" class="hapus"><i class="fas fa-trash" style="color: white;"></i>Hapus Postingan</a>
                                         <a href="../../pages/projek/view-details.php?id=<?= $row['PostID']; ?>"><i class="fa fa-eye"></i> Lihat postingan</a>
                                         <button id="cancel" class="batal-btn">Batal</button>
                                     </div>

@@ -97,7 +97,7 @@ $result = $conn->query($query);
                       <div class="username"><?= htmlspecialchars($row['username']); ?></div>
                     </div>
                     <div class="profil-kanan">
-                    <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
+                      <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
                     </div>
                   </div>
                   <div class="containerImg">
@@ -233,14 +233,14 @@ $result = $conn->query($query);
             </div>
 
 
-            <?php }
+        <?php }
         } ?>
         <!-- Card-->
       </div>
     </main>
   </section>
-  
-  <!-- Overlay -->
+
+  <!-- Overlay laporan -->
   <section class="overlay-laporan" id="overlay-laporan">
     <div class="laporan-container">
       <div class="laporan-header">
@@ -252,7 +252,28 @@ $result = $conn->query($query);
           <label for="alasan">
             <h3>Alasan:</h3>
           </label>
-          <textarea name="alasan" id="alasan" rows="4" required></textarea>
+          <select name="alasan" id="alasanOption">
+            <option value="">Pilih alasan</option>
+            <option value="Spam">Spam</option>
+            <option value="Konten tidak pantas">Konten Tidak Pantas</option>
+            <option value="Pelanggaran hak cipta">Pelanggaran Hak Cipta</option>
+            <option value="Penipuan">Penipuan</option>
+            <option value="Kekerasan">Kekerasan</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+          <textarea name="alasan_detail" id="alasan_detail" rows="4" style="display: none;" required></textarea>
+          <script>
+            let alasanOpsi = document.getElementById('alasanOption').value;
+            document.getElementById("alasanOption").addEventListener("change", function() {
+              if (this.value === "Lainnya") {
+                document.getElementById("alasan_detail").style.display = "block";
+                document.getElementById("alasan_detail").setAttribute("required", "required");
+              } else {
+                document.getElementById("alasan_detail").style.display = "none";
+                document.getElementById("alasan_detail").removeAttribute("required");
+              }
+            });
+          </script>
           <input type="hidden" name="post_id" value="<?= $PostID ?>">
           <input type="hidden" name="user_id" value="<?= $UserID_uploader; ?>">
           <div class="button-wrapper">
@@ -267,8 +288,8 @@ $result = $conn->query($query);
 
   <?php
 
-if (isset($_GET['success']) && $_GET['success'] == strval(hash('sha256', 'laporan'))) {
-  echo "<script>
+  if (isset($_GET['success']) && $_GET['success'] == strval(hash('sha256', 'laporan'))) {
+    echo "<script>
         
         Swal.fire({
         icon: 'success',
@@ -284,7 +305,7 @@ if (isset($_GET['success']) && $_GET['success'] == strval(hash('sha256', 'lapora
         }
       })
         </script>";
-}
+  }
 
 
 

@@ -15,6 +15,7 @@ if (isset($_GET['id_post'])) {
     $post_name = $_GET['post_name'];
     $id_uploader = $_GET['id_uploader'];
     $id_pelapor = $_GET['id_pelapor'];
+    $file = strval($_GET['lokasi']);
     
     $query = "DELETE FROM post WHERE PostID = ?";
     $stmt = $conn->prepare($query);
@@ -23,7 +24,7 @@ if (isset($_GET['id_post'])) {
     if ($stmt->execute()) {
         $aksi = 'Postingan anda dengan caption "' . $post_name . '" telah dihapus oleh admin';
         $id_user = $id_pelapor;
-    
+        
         $queryHistory = $mysqli->prepare("INSERT INTO history (UserID, aksi) VALUES (?, ?)");
         $queryHistory->bind_param('is', $id_uploader,  $aksi);
         $queryHistory->execute();
@@ -31,23 +32,23 @@ if (isset($_GET['id_post'])) {
         
         if (file_exists($file)) {
             unlink($file);  // ini fungsi hapus file
+            header("Location: index.php");
         }
-        
-        header("Location: index.php");
+        exit();
     } else {
         echo "<script>
         Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
             }).then(function() {
                 window.location.href = 'index.php';
-            });
-        </script>";
-    }
-    
-    header("Location:index.php");   
-}
-
-?>
+                });
+                </script>";
+            }
+            
+            header("Location:index.php");   
+        }
+        
+        ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>

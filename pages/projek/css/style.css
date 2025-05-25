@@ -312,6 +312,27 @@ nav {
   gap: 20px;
 }
 
+.overlay-laporan .laporan-container .laporan-body form select#alasanOption {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+select#alasanOption:focus {
+  outline: none;
+  border-color: #3085d6;
+  box-shadow: 0 0 5px rgba(48, 133, 214, 0.5);
+}
+
+select#alasanOption option {
+  padding: 10px;
+  font-size: 16px;
+}
+
 .overlay-laporan .laporan-container .laporan-body form textarea {
   padding: 5px 10px;
 }

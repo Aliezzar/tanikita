@@ -9,21 +9,26 @@ if (isset($_GET['id_post'])) {
     include_once '../../components/connection.php';
     $id_post = $_GET['id_post'];
     $id_user = $_GET['id_user'];
+    $file = strval($_GET['lokasi']);
 
     $query_check = "SELECT * FROM post WHERE PostID = ? AND UserID = ?";
     $stmt_check = $conn->prepare($query_check);
     $stmt_check->bind_param("ii", $id_post, $id_user);
     $stmt_check->execute();
     $result_check = $stmt_check->get_result();
-    
+
     if ($result_check->num_rows > 0) {
-        
+
         $query_delete = "DELETE FROM post WHERE PostID = ? AND UserID = ?";
         $stmt_delete = $conn->prepare($query_delete);
         $stmt_delete->bind_param("ii", $id_post, $id_user);
 
         if ($stmt_delete->execute()) {
             echo "<script>alert('Data berhasil dihapus!'); window.location.href='index.php';</script>";
+            if (file_exists($file)) {
+                unlink($file);  // ini fungsi hapus file
+            }
+            exit();
         } else {
             echo "<script>alert('Gagal menghapus data!'); window.location.href='index.php';</script>";
         }
