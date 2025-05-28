@@ -120,7 +120,9 @@ $result = $mysqli->query($query);
         <section class="admin">
             <h1>User Manajemen</h1>
             <a href="add.php">Add New User</a>
-            <a href="logout.php">Logout</a> <br> <br>
+            <a href="logout.php">Logout</a>
+            <a href="../index.php">Halaman utama</a>
+             <br> <br>
             <table width='80%' border=1>
                 <tr>
                     <th>
