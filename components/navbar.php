@@ -48,7 +48,7 @@
                             </a>
 
                             <ul class="dropdown__menu">
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256",$_SESSION['UserID'])) ?>'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256", $_SESSION['UserID'])) ?>'">
                                     <i class="ri-user-3-line dropdown__icon"></i>
                                     <span class="dropdown__name">Profil</span>
                                 </li>
@@ -84,6 +84,11 @@
             <?php } else { ?>
                 <li>
                     <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/login-register">Sign in / Sign up</a>
+                </li>
+            <?php } ?>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) { ?>
+                <li>
+                    <a style="display: flex; align-items: center;" href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/admin/index.php">Panel Admin</a>
                 </li>
             <?php } ?>
         </ul>

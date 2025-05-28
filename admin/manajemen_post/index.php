@@ -165,7 +165,6 @@ $query = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.desc
                         <td><img src="<?= '../../img/profile/' . $row['profile_picture']; ?>" alt="Foto Profil" style="width: 50px; height: auto;"></td>
                         <td><?= $row['jumlah_like']; ?></td>
                         <td>
-                            <a href="edit_post.php?id_post=<?= htmlspecialchars($row['PostID']); ?>&id_user=<?= htmlspecialchars($row['UserID']); ?>" class="cta-edit" ><i class="fas fa-pencil"></i></a>
                             <a href="../../pages/projek/view-details.php?id=<?= $row['PostID'] ?>" class="cta-lihat-detail" ><i class="fa fa-eye"></i></a>
                             <a href="hapus_post.php?id_post=<?= htmlspecialchars($row['PostID']); ?>&id_user=<?= htmlspecialchars($row['UserID']); ?>&lokasi=../../img/post/<?= $row['image']; ?>" class="cta-hapus" ><i class="fas fa-trash"></i></a>
                         </td>
