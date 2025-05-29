@@ -132,7 +132,6 @@ if ($_POST['submit'] == 'comment') {
     $stmt->close();
 
 
-
     echo json_encode([
         "success" => true,
         "new_comment" =>
@@ -144,7 +143,7 @@ if ($_POST['submit'] == 'comment') {
             '<p>' . $isi_komentar . '</p>' .
             '<p class="comment-date">' . date("Y-m-d H:i:s") . '</p>' .
             '</div>' .
-            '<i class="fa fa-trash" onclick="hapusKomentar(<?= $row_komen[ ' . 'KomentarID' . ' . ] ?>, <?= $_SESSION[' . 'UserID' . ']; ?>, <?= $row_komen[' . 'PostID' . '] ?>)" id="delete-comment" style="color: red;"></i>' .
+            '<i class="fa fa-trash" onclick="hapusKomentar(<?= $row_komen[' .'`' . 'KomentarID' . '`' . ']; ?>, <?= $_SESSION[' . 'UserID' . ']; ?>, <?= $row_komen[' . 'PostID' . '] ?>)" id="delete-comment" style="color: red;"></i>' .
             '<i class="fa fa-pencil" id="edit-comment" style="color: blue;"></i>'
             . '</div></div>'
     ]);

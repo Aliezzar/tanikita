@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
   exit;
 }
 
-$query = 'SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;';
+$query = 'SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.UserID, users.username, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;';
 $result = $conn->query($query);
 ?>
 
@@ -81,13 +81,13 @@ $result = $conn->query($query);
           $cari = $conn->real_escape_string($_GET['cari']);
 
           // Query cari data
-          $query_cari = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post_name LIKE '%$cari%' GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";
+          $query_cari = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.UserID, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post_name LIKE '%$cari%' GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";
           $hasil_cari = $conn->query($query_cari);
-
+          
           // Hasilkan pencarian
           if ($hasil_cari->num_rows > 0) {
 
-
+            
             while ($row = $hasil_cari->fetch_assoc()) { ?>
               <div class="card">
                 <div class="card-header">
@@ -96,9 +96,11 @@ $result = $conn->query($query);
                       <img src="../../img/profile/<?= $row['profile_picture'] ?>" alt="Avatar" class="avatar">
                       <div class="username"><?= htmlspecialchars($row['username']); ?></div>
                     </div>
-                    <div class="profil-kanan">
-                      <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
-                    </div>
+                    <?php if ($row['UserID'] == $_SESSION['UserID']) { ?>
+                      <div class="profil-kanan" style="display: none;">
+                        <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
+                      </div>
+                    <?php } ?>
                   </div>
                   <div class="containerImg">
                     <?php if (empty($row['image'])) { ?>
@@ -174,9 +176,11 @@ $result = $conn->query($query);
                     <img src="../../img/profile/<?= $row['profile_picture'] ?>" alt="Avatar" class="avatar">
                     <div class="username"><?= htmlspecialchars($row['username']); ?></div>
                   </div>
-                  <div class="profil-kanan">
-                    <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
-                  </div>
+                  <?php if ($row['UserID'] == $_SESSION['UserID']) { ?>
+                    <div class="profil-kanan" style="display: none;">
+                      <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
+                    </div>
+                  <?php } ?>
                 </div>
                 <div class="containerImg">
                   <?php if (empty($row['image'])) { ?>
@@ -277,7 +281,6 @@ $result = $conn->query($query);
           <input type="hidden" name="post_id" value="<?= $PostID ?>">
           <input type="hidden" name="user_id" value="<?= $UserID_uploader; ?>">
           <div class="button-wrapper">
-            <button class="btn-batal" onclick="nonaktif('overlay-laporan')">Batal</button>
             <button class="btn-submit" type="submit" name="submit" value="laporan">Kirim Laporan</button>
           </div>
         </form>
