@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.1.1">
   <diagram name="Halaman-1" id="MJmJi7lBrZbFinYOrvxq">
-    <mxGraphModel dx="2181" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2633" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -158,7 +158,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-52" value="belum like?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="364" y="1100" width="100" height="90" as="geometry" />
+          <mxGeometry x="364" y="1300" width="100" height="90" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.99;entryY=0.498;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="HMI9Q-J90Ie4Uta5KRQw-55">
           <mxGeometry relative="1" as="geometry">
@@ -244,22 +244,22 @@
           <mxGeometry x="-20" y="910" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-72" value="User menombol like pada postingan orang lain atau postingan sendiri" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="339" y="1000" width="150" height="70" as="geometry" />
+          <mxGeometry x="339" y="1200" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="HMI9Q-J90Ie4Uta5KRQw-72" target="HMI9Q-J90Ie4Uta5KRQw-52">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-75" value="like bertambah" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
-          <mxGeometry x="240" y="1230" width="161" height="70" as="geometry" />
+          <mxGeometry x="240" y="1430" width="161" height="70" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-77" value="belum" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="329" y="1180" width="60" height="30" as="geometry" />
+          <mxGeometry x="329" y="1380" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-79" value="like berkurang" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
-          <mxGeometry x="449" y="1230" width="161" height="70" as="geometry" />
+          <mxGeometry x="449" y="1430" width="161" height="70" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-80" value="sebelumnya sudah like" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="418.5" y="1180" width="130" height="30" as="geometry" />
+          <mxGeometry x="418.5" y="1380" width="130" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="HMI9Q-J90Ie4Uta5KRQw-81" target="HMI9Q-J90Ie4Uta5KRQw-83">
           <mxGeometry relative="1" as="geometry" />
@@ -267,8 +267,30 @@
         <mxCell id="HMI9Q-J90Ie4Uta5KRQw-81" value="User menombol view details" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="772" y="1000" width="150" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-83" value="Halaman Dashboard" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
-          <mxGeometry x="850" y="1110" width="161" height="70" as="geometry" />
+        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="HMI9Q-J90Ie4Uta5KRQw-83" target="HMI9Q-J90Ie4Uta5KRQw-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-83" value="Halaman detail (like dan komentar)" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.15468749999999998;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="827" y="1120" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="HMI9Q-J90Ie4Uta5KRQw-85" target="HMI9Q-J90Ie4Uta5KRQw-83">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="1305" />
+              <mxPoint x="1040" y="1155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-85" value="User mengomentari postingan" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="832" y="1270" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="HMI9Q-J90Ie4Uta5KRQw-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.999;entryY=0.575;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="HMI9Q-J90Ie4Uta5KRQw-83" target="HMI9Q-J90Ie4Uta5KRQw-72">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="1155" />
+              <mxPoint x="730" y="1240" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

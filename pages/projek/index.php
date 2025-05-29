@@ -65,7 +65,7 @@ $result = $conn->query($query);
 
         <div class="search-box">
           <form action="" method="get">
-            <input type="text" name="cari" placeholder="cari" />
+            <input type="text" name="cari" placeholder="cari" <?php if (isset($_GET['cari'])) { $cari_text = htmlspecialchars($_GET['cari']);?> value="<?= $cari_text ?>" <?php } ?>/>
             <button>Temukan</button>
           </form>
           <a href="add.php"><button>Tambahkan</button></a>
@@ -77,17 +77,19 @@ $result = $conn->query($query);
       <div class="card-wrapper" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
         <!-- Card-->
         <?php
-        if (isset($_GET['cari'])) {
+          if (isset($_GET['cari']) && !empty($_GET['cari'])) {
           $cari = $conn->real_escape_string($_GET['cari']);
 
           // Query cari data
-          $query_cari = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.UserID, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post_name LIKE '%$cari%' GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";
-          $hasil_cari = $conn->query($query_cari);
-          
+          $query_cari = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.UserID, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post_name LIKE ? GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";
+          $cari = '%' . $cari . '%';
+          $hasil_cari = $conn->prepare($query_cari);
+          $hasil_cari->bind_param("s", $cari);
+          $hasil_cari->execute();
+          $hasil_cari = $hasil_cari->get_result();
+
           // Hasilkan pencarian
           if ($hasil_cari->num_rows > 0) {
-
-            
             while ($row = $hasil_cari->fetch_assoc()) { ?>
               <div class="card">
                 <div class="card-header">
@@ -98,6 +100,10 @@ $result = $conn->query($query);
                     </div>
                     <?php if ($row['UserID'] == $_SESSION['UserID']) { ?>
                       <div class="profil-kanan" style="display: none;">
+                        <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
+                      </div>
+                    <?php } else { ?>
+                      <div class="profil-kanan">
                         <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
                       </div>
                     <?php } ?>
@@ -178,6 +184,10 @@ $result = $conn->query($query);
                   </div>
                   <?php if ($row['UserID'] == $_SESSION['UserID']) { ?>
                     <div class="profil-kanan" style="display: none;">
+                      <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
+                    </div>
+                  <?php } else { ?>
+                    <div class="profil-kanan">
                       <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
                     </div>
                   <?php } ?>
