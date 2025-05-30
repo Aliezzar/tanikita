@@ -1,11 +1,8 @@
 <?php
 session_start();
 include_once '../../../components/connection.php';
-$user_id = $_SESSION['UserID'];
-if (!isset($user_id)) {
-  header('Location: ../../login.php');
-  exit();
-}
+include_once '../../../components/wajib_login.php';
+
 
 $query = "SELECT * FROM `history` WHERE UserID = ? ORDER BY `history`.`tanggal` ASC";
 $query = $conn->prepare($query);

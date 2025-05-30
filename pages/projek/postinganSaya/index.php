@@ -2,10 +2,8 @@
 session_start();
 include_once('../../../components/connection.php');
 
-if (!isset($_SESSION['username'])) {
-  header('Location: ../login-register');
-  exit;
-}
+include_once '../../../components/wajib_login.php';
+
 
 $user_id = $_SESSION['UserID'];
 

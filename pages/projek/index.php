@@ -2,10 +2,8 @@
 session_start();
 include_once('../../components/connection.php');
 
-if (!isset($_SESSION['username'])) {
-  header('Location: ../login-register');
-  exit;
-}
+include_once '../../components/wajib_login.php';
+
 
 $query = 'SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.UserID, users.username, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;';
 $result = $conn->query($query);

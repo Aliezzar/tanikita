@@ -262,13 +262,6 @@ include_once '../../components/connection.php';
 
         // javascript untuk menampilkan gambar sebelum submit
 
-        var showImage = function(event) {
-            var output = document.getElementById('image');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function() {
-                URL.revokeObjectURL(output.src);
-            }
-        };
     </script>
     <script>
         if (window.location.search.includes('act=')) {

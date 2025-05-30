@@ -2,10 +2,7 @@
 session_start();
 include_once('../../components/connection.php');
 
-if (!isset($_SESSION['username'])) {
-    header('Location: ../login-register');
-    exit;
-}
+include_once '../../components/wajib_login.php';
 
 if (!isset($_GET['id'])) {
     header('Location: index.php');

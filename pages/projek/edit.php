@@ -2,6 +2,9 @@
 session_start();
 include_once('../../components/connection.php');
 
+include_once '../../components/wajib_login.php';
+
+
 $id_user = $_SESSION['UserID'];
 $id_post = $_GET['post_id'];
 
