@@ -5,10 +5,16 @@ if ($_SESSION['role'] == 1) {
     include_once("../components/connection.php");
 
     $id = $_GET['hapus'];
+    $lokasi = $_GET['lokasi'];
+    $foto = $_GET['foto'];
 
     $query = "DELETE FROM users WHERE UserID = ?;";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("i", $id);
+
+    if ($foto !== 'default.png' && file_exists($lokasi)) {
+            unlink($lokasi);  // ini fungsi hapus file
+    }
 
     if ($stmt->execute()) {
         header("Location: index.php");

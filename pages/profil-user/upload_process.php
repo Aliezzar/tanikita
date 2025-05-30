@@ -79,7 +79,7 @@ function uploadImage()
         // penghapusan gambar lama dari server
         $file_profil_lama = $_SESSION['profile_picture'];
         $file_profil_lama = $target_dir . $file_profil_lama;
-        if (file_exists($file_profil_lama)) {
+        if (file_exists($file_profil_lama) && $_SESSION['profile_picture'] !== 'default.png') {
             unlink($file_profil_lama);  // ini fungsi hapus file
         }
 

@@ -6,8 +6,12 @@ if (!isset($_SESSION['UserID'])) {
     die("Session UserID tidak ditemukan! Coba login ulang.");
 }
 
-$id = $_SESSION['UserID']; // Ambil ID dari session
-
+$id = $_SESSION['UserID'];
+$lokasi = '../../img/profile/' . $_SESSION['profile_picture'];
+$foto = $_SESSION['profile_picture'];
+if ($foto !== 'default.png' && file_exists($lokasi)) {
+    unlink($lokasi);  // ini fungsi hapus file
+}
 // Query DELETE
 $stmt = mysqli_prepare($conn, "DELETE FROM users WHERE UserID = ?");
 mysqli_stmt_bind_param($stmt, "i", $id);
@@ -22,4 +26,3 @@ if (mysqli_stmt_affected_rows($stmt) > 0) {
 } else {
     echo "<script>alert('Gagal menghapus akun.');</script>";
 }
-?>

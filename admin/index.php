@@ -158,7 +158,7 @@ $result = $mysqli->query($query);
                         </td>
                         <td>
                             <a href='edit.php?id=<?php echo $row["UserID"]; ?>'>Edit</a> |
-                            <a onclick="deleteNotif('<?= $row['UserID']; ?>')" style="cursor: pointer;">Delete</a>
+                            <a onclick="deleteNotif(<?= $row['UserID']; ?>, '<?= $row['profile_picture']; ?>')" style="cursor: pointer;">Delete</a>
                         </td>
                     </tr>
                 <?php }
@@ -168,7 +168,8 @@ $result = $mysqli->query($query);
 
 
     <script>
-        function deleteNotif(id) {
+        function deleteNotif(id_user, foto_profil) {
+            const lokasi = `../img/profile/${foto_profil}`;
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -180,7 +181,7 @@ $result = $mysqli->query($query);
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = `delete.php?hapus=${id}`;
+                    window.location.href = `delete.php?hapus=${id_user}&lokasi=${lokasi}&foto=${foto_profil}`;
                 }
             });
         }

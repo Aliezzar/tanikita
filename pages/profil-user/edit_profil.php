@@ -99,7 +99,7 @@ include_once '../../components/connection.php';
     <form action="" method="POST" class="edit-profil" enctype="multipart/form-data">
         <section class="container-profile">
             <div class="profile-view1 profile-edit">
-                <div class="profil-kiri-wrap">
+                <div class="profil-kiri-wrap" style="flex-direction: column;">
                     <div class="profil-sebelah-kiri">
                         <label for="file_upload" style="width: 100%; height: 100%;">
                             <?php if ($_SESSION['profile_picture'] != null) { ?>
@@ -131,10 +131,10 @@ include_once '../../components/connection.php';
                         <button type="submit" name="save_cropped_image" style="display: none;" id="saveCroppedImageButton">Submit Cropped Image</button>
                     </div>
                 </div>
-
-
+                
+                
                 <!-- detail -->
-
+                
                 <div class="detail-profil">
                     <h2>Edit Profil</h2>
                     <table>
