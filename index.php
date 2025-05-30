@@ -65,9 +65,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
                     dari seluruh Indonesia. Jadilah bagian dari gerakan untuk mendukung pertanian lokal dan membangun
                     masa depan yang lebih baik.
                 </p>
-                <a href="pages/aboutMe/index.php">
-                    <button class="buttonP">Pelajari Lebih Lanjut</button>
-                </a>
+                    <button class="buttonP" onclick="aktif('overlay')">Pelajari Lebih Lanjut</button>
             </div>
         </div>
 
@@ -93,12 +91,59 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
     <!-- Footer end -->
 
 
+    <section class="fakta-container" id="overlay" onclick="nonaktif('overlay')">
+        <div class="fakta-wrapper">
+            <div class="fakta-flex">
+                <img src="img/petani-digital.png" alt="">
+                <div class="content">
+                    <h1>Apa tujuan dari website TaniKita?</h1>
+                    <p>Website ini bertujuan untuk menjadi platform sederhana yang menghubungkan petani dengan petani, maupun petani dengan masyarakat, berbagi informasi seputar pertanian, dan mempromosikan produk lokal secara lebih luas bahkan dapat memposting kehidupan dan perjalanan sebagai petani.</p>
+                </div>
+            </div>
+            <br> <br> <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Fitur</th>
+                    <th>Deskripsi</th>
+                    <th>Manfaat</th>
+                </tr>
+                <tr>
+                    <td>Profil Petani</td>
+                    <td>Setiap petani dapat membuat profil untuk menampilkan informasi tentang diri mereka dan usaha pertanian mereka.</td>
+                    <td>Mempermudah masyarakat mengenal petani dan produk mereka.</td>
+                </tr>
+                <tr>
+                    <td>Forum Diskusi</td>
+                    <td>Tempat untuk berbagi informasi, tips, dan pengalaman seputar pertanian.</td>
+                    <td>Meningkatkan pengetahuan dan kolaborasi antar petani.</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
 
     <!-- Typing effect -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <!-- js -->
     <script src="javascript/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        function aktif(id) {
+            let element = document.getElementById(id);
+            if (id) {
+                element.style.display = "flex";
+            }
+        }
+
+        function nonaktif(id) {
+            let element = document.getElementById(id);
+            if (id) {
+                element.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
