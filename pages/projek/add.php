@@ -71,23 +71,23 @@ $query = "SELECT * FROM post";
         <textarea name="description" rows="4" required></textarea>
 
         <label>Foto:</label>
-        <input type="file" name="gambar_postingan" accept="image/*" required>
+        <input type="file" name="gambar_postingan" accept="image/*" id="imgInput" required>
+        <img id="imgOutput" src="" alt="gambar_postingan" width="100%" style="display: block; margin-top: 10px;">
 
         <input type="submit" name="submit" value="tambahkan">
         <a href="index.php">← Kembali ke dashboard</a>
     </form>
 
-    <div id="cropModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeCropModal()">&times;</span>
-            <div class="crop-area">
-                <img src="" style="max-width: 100%;" id="cropImage">
-            </div>
-            <button type="button" onclick="cropAndUpload()">Simpan</button>
-            <input type="hidden" name="cropped_image" id="cropped_image">
-            <button type="submit" name="save_cropped_image" style="display: none;" id="saveCroppedImageButton">Submit Cropped Image</button>
-        </div>
-    </div>
+    <script>
+        document.getElementById('imgOutput').style.display = 'none';
+        imgInput.onchange = evt => {
+            const [file] = imgInput.files
+            if (file) {
+                document.getElementById('imgOutput').style.display = 'block';
+                imgOutput.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 </body>
 
 </html>
