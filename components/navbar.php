@@ -48,7 +48,7 @@
                             </a>
 
                             <ul class="dropdown__menu">
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= htmlspecialchars(hash("sha256", $_SESSION['UserID'])) ?>'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= $_SESSION['UserID']; ?>'">
                                     <i class="ri-user-3-line dropdown__icon"></i>
                                     <span class="dropdown__name">Profil</span>
                                 </li>
@@ -73,7 +73,6 @@
                                 dropdownButton = document.getElementById(button);
 
                             dropdownButton.addEventListener("click", () => {
-                                // We add the show-dropdown class, so that the menu is displayed
                                 dropdownContent.classList.toggle("show-dropdown");
                             });
                         };

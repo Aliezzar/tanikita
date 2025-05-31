@@ -1,8 +1,13 @@
 <?php
 session_start();
-include_once 'user_fetch.php';
 include_once '../../components/connection.php';
 
+$uid = isset($_GET['uid']) ? $_GET['uid'] : $_SESSION['UserID'];
+$query = $conn->prepare("SELECT * FROM users WHERE UserID = ? LIMIT 1;");
+$query->bind_param("i", $uid);
+$query->execute();
+$result = $query->get_result();
+$user = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +27,11 @@ include_once '../../components/connection.php';
 
 <body class="profile_page">
     <?php include '../../components/navbar.php';
-    $id_hash_user = hash('sha256', $_SESSION['UserID']); ?>
+    $UserID = $_SESSION['UserID']; ?>
 
     <section class="container-profile">
         <?php if ($user) {
-            if ($uid == $id_hash_user) { ?>
+            if ($uid == $UserID) { ?>
                 <div class="profile-view1">
                     <div class="profilview-sebelah-kiri">
                         <div class="img">
@@ -73,7 +78,7 @@ include_once '../../components/connection.php';
                         </table>
                     </div>
                 </div>
-            <?php } elseif ($uid != $id_hash_user) { ?>
+            <?php } elseif ($uid !== $UserID) { ?>
                 <div class="profile-view2">
                     <div class="profilview-sebelah-kiri">
                         <div class="img">

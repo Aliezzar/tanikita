@@ -39,7 +39,7 @@ include_once '../../components/connection.php';
         $isFileUploaded = isset($_FILES['file_upload']) && $_FILES['file_upload']['error'] === UPLOAD_ERR_OK;
 
         if ($isFileUploaded) {
-            uploadImage(); 
+            uploadImage();
         }
 
         $current_post = $_POST;
@@ -51,9 +51,9 @@ include_once '../../components/connection.php';
         if ($_SESSION['last_post']) {
             $last_post_normalized = array_map('trim', $_SESSION['last_post']);
 
-            
+
             if ($last_post_normalized !== $normalisasi_current_post) {
-                $_SESSION['last_post'] = $current_post; 
+                $_SESSION['last_post'] = $current_post;
                 header("Location: edit_profil.php?act=success");
                 exit();
             } else {
@@ -62,7 +62,7 @@ include_once '../../components/connection.php';
             }
         }
 
-        
+
         $_SESSION['last_post'] = $current_post;
         header("Location: edit_profil.php?act=success");
         exit();
@@ -131,10 +131,10 @@ include_once '../../components/connection.php';
                         <button type="submit" name="save_cropped_image" style="display: none;" id="saveCroppedImageButton">Submit Cropped Image</button>
                     </div>
                 </div>
-                
-                
+
+
                 <!-- detail -->
-                
+
                 <div class="detail-profil">
                     <h2>Edit Profil</h2>
                     <table>
@@ -179,7 +179,7 @@ include_once '../../components/connection.php';
                         </tr>
                         <tr>
                             <td>
-                                <a href="index.php?uid=<?= htmlspecialchars(hash('sha256', $_SESSION['UserID'])); ?>" class="back_a">
+                                <a href="index.php?uid=<?= $_SESSION['UserID'] ?>" class="back_a">
                                     <button class="back_button" type="button">Kembali</button>
                                 </a>
                             </td>
@@ -261,7 +261,6 @@ include_once '../../components/connection.php';
 
 
         // javascript untuk menampilkan gambar sebelum submit
-
     </script>
     <script>
         if (window.location.search.includes('act=')) {

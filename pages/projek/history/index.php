@@ -2,6 +2,7 @@
 session_start();
 include_once '../../../components/connection.php';
 include_once '../../../components/wajib_login.php';
+$user_id = $_SESSION['UserID'];
 
 
 $query = "SELECT * FROM `history` WHERE UserID = ? ORDER BY `history`.`tanggal` ASC";

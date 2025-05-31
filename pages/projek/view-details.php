@@ -72,7 +72,7 @@ $likeRow = $hasil->fetch_assoc();
                             <b><?= htmlspecialchars($row['username']); ?></b>
                         </div>
                     </div>
-                    <button class="edit-btn" type="button" aria-label="cek-username" onclick="window.location.href='../profil-user/index.php?uid=<?= hash('sha256', $row['UserID']); ?>'">
+                    <button class="edit-btn" type="button" aria-label="cek-username" onclick="window.location.href='../profil-user/index.php?uid=<?= $row['UserID'] ?>'">
                         Lihat Profil
                     </button>
                 </section>

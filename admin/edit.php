@@ -13,11 +13,14 @@ if ($_SESSION['role'] == 1) {
         $id = $_POST['UserID'];
         $username = $_POST['username'];
         $email = $_POST['email'];
-        $password = hash('sha256', $_POST['password']);
+        $password = $_POST['password'];
+        $password = password_hash($password, PASSWORD_BCRYPT);
         $role = $_POST['role'];
 
-        $result = mysqli_query($mysqli, "UPDATE users SET username='$username', email='$email', role='$role', password='$password' WHERE UserID=$id");
-
+        $query = "UPDATE users SET username=?, email=?, role=?, password=? WHERE UserID=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sssii", $username, $email, $role, $password, $id);
+        $result = $stmt->execute();
         if ($result) {
             header("Location: index.php");
         } else {

@@ -65,7 +65,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
                     dari seluruh Indonesia. Jadilah bagian dari gerakan untuk mendukung pertanian lokal dan membangun
                     masa depan yang lebih baik.
                 </p>
-                    <button class="buttonP" onclick="aktif('overlay')">Pelajari Lebih Lanjut</button>
+                <button class="buttonP" onclick="aktif('overlay')">Pelajari Lebih Lanjut</button>
             </div>
         </div>
 

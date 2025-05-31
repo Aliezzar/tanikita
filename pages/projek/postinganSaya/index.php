@@ -88,7 +88,7 @@ $result = $query->get_result();
                     <img src="../../../img/profile/<?= $row['profile_picture'] ?>" alt="Avatar" class="avatar">
                     <div class="username"><?= htmlspecialchars($row['username']); ?></div>
                   </div>
-                  <div class="profil-kanan">
+                  <div class="profil-kanan" style="display: none;">
                     <i class="fas fa-exclamation-circle icon" onclick="aktif('overlay-laporan')"></i>
                   </div>
                 </div>

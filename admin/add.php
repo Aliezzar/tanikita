@@ -1,6 +1,10 @@
 <?php
 session_start();
-if ($_SESSION['role'] == 1) {
+include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 1) {
+    header("Location: ../accessDenied.html");
+}
 ?>
 
     <!DOCTYPE html>
@@ -167,8 +171,8 @@ if ($_SESSION['role'] == 1) {
             }
         </style>
         <!-- Sweetalert2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body>
@@ -208,12 +212,12 @@ if ($_SESSION['role'] == 1) {
         if (isset($_POST['Submit'])) {
             $username = $_POST['username'];
             $email = $_POST['email'];
-            $password = hash('sha256', $_POST['password']);
+            $password = $_POST['password'];
+            $password = password_hash($password, PASSWORD_BCRYPT);
             $role = $_POST['role'];
-
-            include_once("config.php");
-
-            $result = mysqli_query($mysqli, "INSERT INTO users(username, email, password, role) VALUES('$username', '$email', '$password', '$role')");
+            $result = $conn->prepare("INSERT INTO users(username, email, `password`, `role`) VALUES(?, ?, ?, ?)");
+            $result->bind_param("sssi", $username, $email, $password, $role);
+            $result->execute();
         ?>
             <script>
                 Swal.fire({
@@ -233,10 +237,3 @@ if ($_SESSION['role'] == 1) {
     </body>
 
     </html>
-
-<?php
-} else {
-    header("Location: ../accessDenied.html");
-    exit();
-}
-?>

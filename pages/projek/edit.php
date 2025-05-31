@@ -5,6 +5,7 @@ include_once('../../components/connection.php');
 include_once '../../components/wajib_login.php';
 
 
+
 $id_user = $_SESSION['UserID'];
 $id_post = $_GET['post_id'];
 
@@ -13,6 +14,11 @@ $stmt->bind_param('i', $id_post);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
+if ($_SESSION['UserID'] !== $row['UserID']) {
+    header('Location: index.php');
+    exit();
+
+}
 
 $file_name = str_replace(' ', '_', $row['image']); // Sanitasi nama file untuk mengganti spasi jadi _
 ?>
@@ -86,7 +92,8 @@ $file_name = str_replace(' ', '_', $row['image']); // Sanitasi nama file untuk m
         <?php } ?>
         <br>
         <label>Gambar Baru (jika ingin mengganti):</label>
-        <input type="file" name="gambar_postingan" accept="image/*">
+        <input type="file" id="imgInput" name="gambar_postingan" accept="image/*">
+        <img id="imgOutput" src="" alt="gambar_postingan" width="100%" style="display: block; margin-top: 10px;">
 
         <input type="submit" name="submit" value="submit_edit">
         <a href="index.php">← Kembali ke dashboard postingan</a>
@@ -95,6 +102,16 @@ $file_name = str_replace(' ', '_', $row['image']); // Sanitasi nama file untuk m
         <input type="hidden" name="id_post" value="<?= $id_post; ?>">
     </form>
 
+    <script>
+        document.getElementById('imgOutput').style.display = 'none';
+        imgInput.onchange = evt => {
+            const [file] = imgInput.files
+            if (file) {
+                document.getElementById('imgOutput').style.display = 'block';
+                imgOutput.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 </body>
 
 </html>
