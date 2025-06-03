@@ -1,7 +1,6 @@
 <?php
 session_start();
-include_once('../../components/connection.php');
-
+include_once '../../components/connection.php';
 include_once '../../components/wajib_login.php';
 
 
