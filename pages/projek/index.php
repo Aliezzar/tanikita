@@ -79,7 +79,7 @@ $result = $conn->query($query);
 
           // Query cari data
           $query_cari = "SELECT post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.UserID, users.profile_picture, COUNT(suka.id) AS jumlah_like FROM post INNER JOIN users ON post.UserID = users.UserID LEFT JOIN suka ON post.PostID = suka.PostID WHERE post_name LIKE ? GROUP BY post.PostID, post.UserID, post.post_name, post.image, post.description, post.created_at, users.username, users.profile_picture;";
-          $cari = '%' . $cari . '%';
+          $cari = '%' . htmlspecialchars($cari) . '%';
           $hasil_cari = $conn->prepare($query_cari);
           $hasil_cari->bind_param("s", $cari);
           $hasil_cari->execute();
