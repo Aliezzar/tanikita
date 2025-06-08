@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jun 2025 pada 21.59
+-- Waktu pembuatan: 09 Jun 2025 pada 01.03
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -33,6 +33,15 @@ CREATE TABLE `history` (
   `aksi` text DEFAULT NULL,
   `tanggal` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `history`
+--
+
+INSERT INTO `history` (`HistoryID`, `UserID`, `aksi`, `tanggal`) VALUES
+(207, 3, 'menambahkan postingan baru dengan caption \"I love petani digital\"', '2025-06-03 11:13:38'),
+(208, 4, 'melaporkan postingan dengan alasan \"Pelanggaran hak cipta\"', '2025-06-03 12:08:58'),
+(209, 3, 'Menghapus postingan \"I love petani digital\"', '2025-06-09 04:48:40');
 
 -- --------------------------------------------------------
 
@@ -113,7 +122,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `username`, `password`, `email`, `profile_picture`, `jenis_kelamin`, `role`, `created_at`) VALUES
-(1, 'admin', '$2y$10$Lkl7y7TDSQ9t0HpTXXpPnOxqMpgL2NZj5EeXU0joElmHB1nnp/nG2', NULL, 'default.png', 'Laki-laki', 1, '2025-06-01 02:02:33');
+(1, 'admin', '$2y$10$Lkl7y7TDSQ9t0HpTXXpPnOxqMpgL2NZj5EeXU0joElmHB1nnp/nG2', NULL, 'default.png', 'Laki-laki', 1, '2025-06-01 02:02:33'),
+(3, 'Aliezzar Wijaya', '$2y$10$F7rjp8ZWQdaDe9Xf6uZdv.Lfd4VtYA/pjDWa1AU9ZzgDenoJcSntS', 'aliezzar42@gmail.com', 'default.png', 'Laki-laki', 0, '2025-06-02 17:01:19'),
+(4, 'anjay', '$2y$10$mULMJUd85t8G1FBXbb1lyuEsU0SI5Ek9EyRGmZp0mxG7MelYaRjRm', 'aliezzar_wijaya_ts7_24@gmail.com', 'default.png', 'Laki-laki', 0, '2025-06-03 11:18:52');
 
 --
 -- Indexes for dumped tables
@@ -173,7 +184,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `history`
 --
 ALTER TABLE `history`
-  MODIFY `HistoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `HistoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT untuk tabel `komentar`
@@ -185,13 +196,13 @@ ALTER TABLE `komentar`
 -- AUTO_INCREMENT untuk tabel `laporan_pelanggaran_postingan`
 --
 ALTER TABLE `laporan_pelanggaran_postingan`
-  MODIFY `LaporanID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `LaporanID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT untuk tabel `suka`
@@ -203,7 +214,7 @@ ALTER TABLE `suka`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
