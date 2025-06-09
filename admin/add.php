@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/components/connection.php';
 
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 1) {
     header("Location: ../accessDenied.html");

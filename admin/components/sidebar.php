@@ -39,13 +39,13 @@
         <span style="color: #9ca3af;">Panel</span> Admin
     </div>
     <nav class="sidebar-container">
-        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/admin/index.php" class="child-sidebar">
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/admin/index.php" class="child-sidebar">
             <i class="fas fa-tachometer-alt" style="margin-right: 0.5rem;"></i> Manajemen Pengguna
         </a>
-        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/admin/manajemen_post/index.php" class="child-sidebar">
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/admin/manajemen_post/index.php" class="child-sidebar">
             <i class="fas fa-edit" style="margin-right: 0.5rem;"></i> Manajemen postingan
         </a>
-        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/admin/laporan_pengguna/index.php" class="child-sidebar">
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/admin/laporan_pengguna/index.php" class="child-sidebar">
             <i class="fas fa-flag" style="margin-right: 0.5rem; color: red;"></i> Laporan Pengguna
         </a>
     </nav>

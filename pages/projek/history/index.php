@@ -49,12 +49,12 @@ $result = $query->get_result();
 
 <body>
   <!-- Navbar -->
-  <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/navbar.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/components/navbar.php'; ?>
   <!-- navbar end -->
 
   <section class="containerAll">
     <!-- sidebar -->
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/sidebar.php'; ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/components/sidebar.php'; ?>
     <!-- sidebar end -->
     <main class="main-content" style="height: 100vh;">
       <!-- Banner Section -->

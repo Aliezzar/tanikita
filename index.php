@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/components/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +38,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
 <body>
 
     <!-- Navbar -->
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/navbar.php'; ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/components/navbar.php'; ?>
 
     <section id="home" class="banner">
         <div class="content">
@@ -87,7 +87,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/connection.php';
     <!-- informasi end -->
 
     <!-- Footer -->
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/footer.php'; ?>
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/components/footer.php'; ?>
     <!-- Footer end -->
 
 

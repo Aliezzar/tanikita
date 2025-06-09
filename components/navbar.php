@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaniKita</title>
-    <link rel="stylesheet" href="/tanikita/css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
@@ -29,11 +29,11 @@
 <body>
 
     <nav style="color: black;">
-        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/index.php" class="logo">Tani<span>Kita</span></a>
+        <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/index.php" class="logo">Tani<span>Kita</span></a>
         <ul style="color: black;">
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/#home">Home</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/#informasi">Informasi</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/aboutMe/index.php">Tentang Kami</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/#home">Home</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/#informasi">Informasi</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/aboutMe/index.php">Tentang Kami</a></li>
             <?php if (isset($_SESSION['username'])) { ?>
                 <li>
                     <div class="container">
@@ -48,12 +48,12 @@
                             </a>
 
                             <ul class="dropdown__menu">
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/profil-user/index.php?uid=<?= $_SESSION['UserID']; ?>'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/pages/profil-user/index.php?uid=<?= $_SESSION['UserID']; ?>'">
                                     <i class="ri-user-3-line dropdown__icon"></i>
                                     <span class="dropdown__name">Profil</span>
                                 </li>
 
-                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/tanikita/pages/login-register/logout.php'">
+                                <li class="dropdown__item" onclick="location.href='http://<?= $_SERVER["HTTP_HOST"]; ?>/pages/login-register/logout.php'">
                                     <i class="ri-logout-box-line dropdown__icon"></i>
                                     <span class="dropdown__name">Log out</span>
                                 </li>
@@ -82,12 +82,12 @@
                 </li>
             <?php } else { ?>
                 <li>
-                    <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/login-register">Sign in / Sign up</a>
+                    <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/login-register">Sign in / Sign up</a>
                 </li>
             <?php } ?>
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) { ?>
                 <li>
-                    <a style="display: flex; align-items: center;" href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/admin/index.php">Panel Admin</a>
+                    <a style="display: flex; align-items: center;" href="http://<?= $_SERVER['HTTP_HOST']; ?>/admin/index.php">Panel Admin</a>
                 </li>
             <?php } ?>
         </ul>
@@ -99,4 +99,4 @@
         </div>
     </nav>
 
-    <script src="/tanikita/javascript/navbar.js"></script>
+    <script src="/javascript/navbar.js"></script>

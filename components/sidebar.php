@@ -83,9 +83,9 @@
         </div>
 
         <ul class="list-items">
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/projek/index.php"><i class="fas fa-home"></i>Dashboard</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/projek/postinganSaya/index.php"><i class="fas fa-file-alt"></i>Postingan Saya</a></li>
-            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/projek/history/index.php"><i class="fas fa-history"></i>History</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/projek/index.php"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/projek/postinganSaya/index.php"><i class="fas fa-file-alt"></i>Postingan Saya</a></li>
+            <li><a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/projek/history/index.php"><i class="fas fa-history"></i>History</a></li>
         </ul>
     </aside>
 </aside>

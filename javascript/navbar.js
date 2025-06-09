@@ -23,7 +23,7 @@ function deleteAccount() {
         if (result.isConfirmed) {
             var form = document.createElement('form');
             form.method = 'POST';
-            form.action = '/tanikita/pages/login-register/deleteAccount.php';
+            form.action = '/pages/login-register/deleteAccount.php';
 
             var input = document.createElement('input');
             input.type = 'hidden';

@@ -50,7 +50,7 @@ $result = $query->get_result();
 
 <body>
   <!-- Navbar -->
-  <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/tanikita/components/navbar.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/components/navbar.php'; ?>
   <!-- navbar end -->
 
   <section class="containerAll">

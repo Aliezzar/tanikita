@@ -55,12 +55,12 @@
         </div>
 
         <div class="links">
-            <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/index.php">Halaman Utama</a>
-            <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/pages/aboutMe/index.php">Tentang Kami</a>
+            <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/index.php">Halaman Utama</a>
+            <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/pages/aboutMe/index.php">Tentang Kami</a>
         </div>
 
         <div class="credit">
-            <p>Created by <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/tanikita/index.php">aliezzarwijaya</a>. | &copy; 2024.</p>
+            <p>Created by <a href="http://<?= $_SERVER['HTTP_HOST']; ?>/index.php">aliezzarwijaya</a>. | &copy; 2024.</p>
         </div>
     </footer>
 </body>
